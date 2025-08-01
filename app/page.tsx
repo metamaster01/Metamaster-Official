@@ -59,21 +59,20 @@ export default function LandingPage() {
       </div>
 
       {/* Header */}
-      <header className="relative z-10 p-4 sm:p-6 md:p-8 animate-fade-in-down">
-        <div className="max-w-xs sm:max-w-sm md:max-w-md mx-auto">
-            <div className="flex items-center justify-center">
-  <Image
-  src="/logo.png"
-  alt="Meta Master Logo"
-  width={420}
-  height={140}
-  className="w-[420px] h-auto sm:w-[480px] md:w-[520px]"
-/>
+     <header className="relative z-10 p-4 sm:p-6 md:p-8 animate-fade-in-down">
+  <div className="max-w-xs sm:max-w-sm md:max-w-md mx-auto">
+    <div className="flex items-center justify-center">
+      <Image
+        src="/logo.png"
+        alt="Meta Master Logo"
+        width={350}
+        height={120}
+        className="w-[350px] h-auto scale-150"
+      />
+    </div>  
+  </div>
+</header>
 
-
-      </div>  
-        </div>
-      </header>
 
       {/* Main Content */}
       <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-12 sm:py-16 md:py-20">
