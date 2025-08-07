@@ -19,9 +19,9 @@ export default function LandingPage() {
         </div>
 
         {/* Additional ellipse layer for enhanced depth */}
-        {/* <div className="absolute top-0 left-0 w-full h-full">
+        <div className="absolute top-0 left-0 w-full h-full">
           <Image src="/ellipse.png" alt="" fill className="object-cover opacity-30 scale-125" priority />
-        </div> */}
+        </div>
 
         {/* Reduced black overlay to preserve purple gradient */}
         <div className="absolute inset-0 bg-black/20" />
@@ -30,7 +30,7 @@ export default function LandingPage() {
       {/* Header */}
       <header className="relative z-10 p-4 md:p-8 animate-fade-in-down">
         <div className="max-w-96 mx-auto">
-          <div className="bg-gradient-to-r from-white/95 to-purple-50/95 backdrop-blur-sm rounded-full px-2 py-2 shadow-2xl">
+          {/* <div className="bg-gradient-to-r from-white/95 to-purple-50/95 backdrop-blur-sm rounded-full px-2 py-2 shadow-2xl"> */}
             <div className="flex items-center justify-center">
               <div className="hover:scale-105 transition-transform duration-300">
                 <Image
@@ -41,7 +41,7 @@ export default function LandingPage() {
                 />
               </div>
             </div>
-          </div>
+          {/* </div> */}
         </div>
       </header>
 
