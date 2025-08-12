@@ -14,19 +14,28 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "MetaMaster",
-  description: "Metamaster is your one-stop solution for digital success—offering expert web design, SEO, digital marketing, event planning, branding, and more. Elevate your online and offline presence with tailored strategies that deliver real results.",
+  description:
+    "Metamaster is your one-stop solution for digital success—offering expert web design, SEO, digital marketing, event planning, branding, and more. Elevate your online and offline presence with tailored strategies that deliver real results.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <head>
+        {/* Font Awesome CDN */}
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+          integrity="sha512-KfwE5A2gRDO8ydZMNcGuxZxvXNSg9bLGlmZ2DyUv6T+Yo1NNuLScWoEBQyRjXu95s4GeHxNcRCULIEbeY3kGdg=="
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>
