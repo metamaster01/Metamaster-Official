@@ -53,49 +53,12 @@ export default function LandingPage() {
     <div className="min-h-screen bg-black relative overflow-hidden pt-safe-top pb-safe-bottom">
       {/* Background Images */}
       <div className="absolute inset-0">
-<<<<<<< HEAD
-        {/* Linear gradient background - increased opacity to show purple */}
-        <div className="absolute inset-0">
-          <Image src="/liner.png" alt="" fill className="object-cover opacity-90" priority />
-        </div>
-
-        {/* Ellipse vignette overlay - adjusted for better blending */}
-        <div className="absolute inset-0">
-          <Image src="/ellipse.png" alt="" fill className="object-cover opacity-70 scale-110" priority />
-        </div>
-
-        {/* Additional ellipse layer for enhanced depth */}
-        <div className="absolute top-0 left-0 w-full h-full">
-          <Image src="/ellipse.png" alt="" fill className="object-cover opacity-30 scale-125" priority />
-        </div>
-
-        {/* Reduced black overlay to preserve purple gradient */}
-=======
         <Image src="/liner.png" alt="" fill className="object-cover opacity-90" priority />
         <Image src="/ellipse.png" alt="" fill className="object-cover opacity-70 scale-110" priority />
->>>>>>> b87f175d13daee2d355a73ba78fe8e611a561010
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
       {/* Header */}
-<<<<<<< HEAD
-      <header className="relative z-10 p-4 md:p-8 animate-fade-in-down">
-        <div className="max-w-96 mx-auto">
-          {/* <div className="bg-gradient-to-r from-white/95 to-purple-50/95 backdrop-blur-sm rounded-full px-2 py-2 shadow-2xl"> */}
-            <div className="flex items-center justify-center">
-              <div className="hover:scale-105 transition-transform duration-300">
-                <Image
-                  src="/logo.png"
-                  alt="Meta Master Logo"
-                  width={200}
-                  height={90}
-                />
-              </div>
-            </div>
-          {/* </div> */}
-        </div>
-      </header>
-=======
      <header className="relative z-10 p-4 sm:p-6 md:p-8 animate-fade-in-down">
   <div className="max-w-xs sm:max-w-sm md:max-w-md mx-auto">
     <div className="flex items-center justify-center">
@@ -110,7 +73,6 @@ export default function LandingPage() {
   </div>
 </header>
 
->>>>>>> b87f175d13daee2d355a73ba78fe8e611a561010
 
       {/* Main Content */}
       <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 py-12 sm:py-16 md:py-20">
