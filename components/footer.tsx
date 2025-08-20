@@ -8,25 +8,25 @@ const Footer = () => {
     <footer className="relative bg-[#0a0f1c] text-white overflow-hidden">
       {/* Card with background image */}
       <div
-        className="max-w-4xl mx-auto text-center px-8 py-16 mt-10 shadow-lg rounded-2xl relative z-10 bg-cover bg-center"
+        className="w-full max-w-7xl mx-auto text-center px-12 py-10 mt-10 shadow-xl rounded-2xl relative z-10 bg-cover bg-center"
         style={{
           backgroundImage: "url('/footer2.png')",
         }}
       >
-        <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+        <h2 className="text-3xl md:text-5xl font-semibold mb-6">
           We would love to hear from you. <br /> Let’s Grow together
         </h2>
-        <p className="text-gray-200 mb-6">
+        <p className="text-gray-200 mb-8 max-w-3xl mx-auto">
           With expertise in cutting edge technologies, we create responsive,
-          user friendly websites and applications that looks stunning.
+          user friendly websites and applications that look stunning.
         </p>
-        <Button className="bg-white text-black hover:bg-gray-200 px-6 py-2 rounded-lg">
+        <Button className="bg-white text-black hover:bg-gray-200 px-8 py-3 rounded-lg text-lg">
           Contact us
         </Button>
       </div>
 
       {/* Footer Content */}
-      <div className="relative z-10 px-6 pt-20 pb-40 text-center text-sm">
+      <div className="relative z-10 px-6 pt-20 pb-8 text-center text-sm">
         <div className="flex flex-col md:flex-row justify-center items-center gap-8 text-gray-300">
           <div className="flex items-center gap-2">
             <Phone size={16} /> <span>+91 9529770498</span>
@@ -39,7 +39,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex justify-between items-center text-gray-400 mt-10 max-w-3xl mx-auto">
+        <div className="flex justify-between items-center text-gray-400 mt-6 max-w-3xl mx-auto">
           <a href="#" className="hover:text-white">
             Terms and conditions
           </a>
@@ -51,11 +51,11 @@ const Footer = () => {
       </div>
 
       {/* Footer Illustration */}
-      <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center pointer-events-none">
+      <div className="w-full mt-4">
         <img
           src="/footer.png"
           alt="Robots Illustration"
-          className="w-[800px] md:w-[1000px]"
+          className="w-full object-cover"
         />
       </div>
     </footer>

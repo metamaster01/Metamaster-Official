@@ -7,7 +7,8 @@ const testimonials = [
     sector: "Real Estate Sector",
     testimonial:
       "Meta Master took our social media to the next level. Leads started flowing from day 1! Highly recommend!",
-    image: "/professional-woman-cat-smile.png",
+    image: "/client1.jpg",
+    bg: "#4F21A1",
   },
   {
     id: 2,
@@ -15,7 +16,8 @@ const testimonials = [
     sector: "Beauty Culture",
     testimonial:
       "Metamask talented and attentive team. They understood our vision and provided valuable insights that elevated our design process.",
-    image: "/elegant-woman-gold.png",
+    image: "/client2.png",
+    bg: "#D26AFF",
   },
 ]
 
@@ -31,34 +33,33 @@ export function ClientTestimonials() {
 
         {/* Testimonials Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {testimonials.map((testimonial) => (
-            <div key={testimonial.id} className="flex gap-6">
+          {testimonials.map((t) => (
+            <div
+              key={t.id}
+              className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-lg overflow-hidden"
+            >
               {/* Client Image */}
-              <div className="flex-shrink-0">
-                <div className="w-32 h-40 rounded-lg overflow-hidden">
-                  <Image
-                    src={testimonial.image || "/placeholder.svg"}
-                    alt={`${testimonial.name} testimonial`}
-                    width={128}
-                    height={160}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+              <div className="h-full">
+                <Image
+                  src={t.image || "/placeholder.svg"}
+                  alt={`${t.name} testimonial`}
+                  width={400}
+                  height={500}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Testimonial Content */}
-              <div className="flex-1">
-                <div className="bg-purple-600 rounded-lg p-4 mb-4 relative">
-                  <p className="text-white text-sm leading-relaxed">"{testimonial.testimonial}"</p>
-                  {/* Speech bubble arrow */}
-                  <div className="absolute bottom-0 left-4 transform translate-y-full">
-                    <div className="w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-purple-600"></div>
-                  </div>
-                </div>
-
+              <div
+                className="flex flex-col justify-between p-6"
+                style={{ backgroundColor: t.bg }}
+              >
+                <p className="text-white text-sm md:text-base leading-relaxed mb-6">
+                  “{t.testimonial}”
+                </p>
                 <div className="text-white">
-                  <p className="font-semibold text-lg">{testimonial.name}</p>
-                  <p className="text-gray-400 text-sm">{testimonial.sector}</p>
+                  <p className="font-semibold text-lg">{t.name}</p>
+                  <p className="text-gray-200 text-sm">{t.sector}</p>
                 </div>
               </div>
             </div>

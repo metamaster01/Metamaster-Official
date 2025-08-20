@@ -6,6 +6,7 @@ export default function ServicesPage() {
   const services = [
     {
       title: "Social Media Management",
+      subheader: "We Create. We Connect. We Convert.",
       items: [
         "No Clients, We Generate Upto Content",
         "Consistent content calendar",
@@ -17,6 +18,7 @@ export default function ServicesPage() {
     },
     {
       title: "Website, SEO & Funnel Building",
+      subheader: "Build Fast, Rank High, Convert Smart",
       items: [
         "Business-Ready High-Conversion Funnel",
         "Responsive Website Design & Development",
@@ -29,6 +31,7 @@ export default function ServicesPage() {
     },
     {
       title: "Paid Ads & Lead Generation",
+      subheader: "We Turn Clicks Into Conversions.",
       items: [
         "We Run Clickfunnels Campaigns",
         "Data-Driven Ad Strategy & Audience Engagement",
@@ -41,6 +44,7 @@ export default function ServicesPage() {
     },
     {
       title: "Branding & Design",
+      subheader: "Your Brand, Designed to Impress.",
       items: [
         "Logo Design, Document templates",
         "Brand & Visual Identity Development",
@@ -52,6 +56,7 @@ export default function ServicesPage() {
     },
     {
       title: "Influencer Marketing & Content",
+      subheader: "Where Influence Meets Strategy.",
       items: [
         "Influencer Outreach, Micro-Influencer",
         "Bulk and Micro Outreach Campaigns",
@@ -62,6 +67,7 @@ export default function ServicesPage() {
     },
     {
       title: "WhatsApp & Email Marketing",
+      subheader: "Direct Marketing That Converts & Builds Loyalty",
       items: [
         "Direct Marketing, High-Conversion & Builds",
         "Targeted",
@@ -74,16 +80,17 @@ export default function ServicesPage() {
     },
     {
       title: "Content Production & Reels",
+      subheader: "Content That Trends, Tells & Sells",
       items: [
         "Creative Reel Trends, Tips & Tricks",
-        "TV-Ads, new reels trends (production, script,",
-        "shooting, editing)",
+        "TV-Ads, new reels trends (production, script, shooting, editing)",
         "Creative copywriting & hook writing",
         "Brand storytelling & content strategies",
       ],
     },
     {
       title: "Offline Event Branding",
+      subheader: "Bring Your Brand to Life — Offline!",
       items: [
         "Bring Your Brand to Life - Offline!",
         "Event branding, graphic design",
@@ -122,9 +129,9 @@ export default function ServicesPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Hero Section */}
-      <div className="container mx-auto px-6 py-16">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
+      <div className="w-full max-w-7xl px-6 py-16">
+        {/* Hero Section */}
         <div className="max-w-4xl">
           <h1 className="text-5xl font-bold mb-6">
             Our 360° <span className="text-purple-400">Services</span>
@@ -140,12 +147,16 @@ export default function ServicesPage() {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 border-purple-500/30 p-6 hover:from-purple-600/30 hover:to-purple-800/30 transition-all duration-300"
+              className="bg-[#1A1A1A] border border-gray-700 p-6 hover:bg-[#222222] transition-all duration-300"
             >
-              <div className="flex items-start justify-between mb-4">
+              <div className="flex items-start justify-between mb-2">
                 <h3 className="text-xl font-semibold text-white">{service.title}</h3>
                 <ArrowUpRight className="w-5 h-5 text-purple-400 flex-shrink-0" />
               </div>
+              {/* Subheader */}
+              <p className="text-purple-400 text-sm font-medium mb-4">
+                {service.subheader}
+              </p>
               <ul className="space-y-2">
                 {service.items.map((item, itemIndex) => (
                   <li key={itemIndex} className="text-gray-300 text-sm leading-relaxed">
@@ -156,31 +167,30 @@ export default function ServicesPage() {
             </Card>
           ))}
         </div>
-
         {/* Explore Packages Button */}
-        <div className="flex justify-start mt-12">
+        <div className="flex justify-left mt-12">
           <Button className="bg-white text-black hover:bg-gray-200 px-8 py-3 rounded-lg font-medium">
             Explore Packages
           </Button>
         </div>
-      </div>
 
-      {/* Why Choose Section */}
-      <div className="container mx-auto px-6 py-16">
-        <h2 className="text-4xl font-bold mb-12">
-          Why choose <span className="text-purple-400">Metamaster</span>?
-        </h2>
+        {/* Why Choose Section */}
+        <div className="mt-24">
+          <h2 className="text-4xl font-bold mb-12">
+            Why choose <span className="text-purple-400">Metamaster</span>?
+          </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {whyChoose.map((item, index) => (
-            <Card
-              key={index}
-              className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 border-purple-500/30 p-6 hover:from-purple-600/30 hover:to-purple-800/30 transition-all duration-300"
-            >
-              <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
-              <p className="text-gray-300 text-sm leading-relaxed">{item.description}</p>
-            </Card>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
+            {whyChoose.map((item, index) => (
+              <Card
+  key={index}
+  className="bg-gradient-to-b from-[#000000] via-[#200D42] via-[#4F21A1] to-[#D26AFF] border border-gray-700 p-6 hover:opacity-90 transition-all duration-300"
+>
+                <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">{item.description}</p>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </div>

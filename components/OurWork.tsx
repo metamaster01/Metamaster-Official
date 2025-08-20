@@ -12,74 +12,82 @@ export default function OurWork() {
         {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {/* Zaina Collection */}
-          <div className="relative group cursor-pointer">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-800">
+          <div className="group cursor-pointer">
+            <div className="aspect-[2/-5] rounded-2xl overflow-hidden bg-gray-800">
               <img
                 src="/work1.png"
                 alt="Zaina Collection"
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
-            <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-              <h3 className="text-white font-semibold text-lg">Zaina Collection</h3>
-              <div className="text-right">
-                <p className="text-gray-300 text-sm">Web Design/Visual Design</p>
-                <p className="text-gray-400 text-sm">2025</p>
-              </div>
+            <div className="mt-4 grid grid-cols-3 items-start">
+              <h3 className="text-white font-semibold text-lg text-left">
+                Zaina Collection
+              </h3>
+              <p className="text-gray-300 text-sm text-center">
+                Web Design/Visual Design
+              </p>
+              <p className="text-gray-400 text-sm text-right">2025</p>
             </div>
           </div>
 
           {/* Streetspheree Group */}
-          <div className="relative group cursor-pointer">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-800">
+          <div className="group cursor-pointer">
+            <div className="aspect-[2/-5] rounded-2xl overflow-hidden bg-gray-800">
               <img
                 src="/work2.png"
                 alt="Streetspheree Group"
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
-            <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-              <h3 className="text-white font-semibold text-lg">Streetspheree Group</h3>
-              <div className="text-right">
-                <p className="text-gray-300 text-sm">Website Design/Visual Design</p>
-                <p className="text-gray-400 text-sm">2024</p>
-              </div>
+            <div className="mt-4 grid grid-cols-3 items-start">
+              <h3 className="text-white font-semibold text-lg text-left">
+                Streetspheree Group
+              </h3>
+              <p className="text-gray-300 text-sm text-center">
+                Website Design/Visual Design
+              </p>
+              <p className="text-gray-400 text-sm text-right">2024</p>
             </div>
           </div>
 
           {/* Shah Tzu Dog Brand */}
-          <div className="relative group cursor-pointer">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-800">
+          <div className="group cursor-pointer">
+            <div className="aspect-[2/-5] rounded-2xl overflow-hidden bg-gray-800">
               <img
                 src="/work3.png"
                 alt="Shah Tzu Dog Brand"
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
-            <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-              <h3 className="text-white font-semibold text-lg">Shah Tzu Dog Brand</h3>
-              <div className="text-right">
-                <p className="text-gray-300 text-sm">Web Design/Visual Design</p>
-                <p className="text-gray-400 text-sm">2025</p>
-              </div>
+            <div className="mt-4 grid grid-cols-3 items-start">
+              <h3 className="text-white font-semibold text-lg text-left">
+                Shah Tzu Dog Brand
+              </h3>
+              <p className="text-gray-300 text-sm text-center">
+                Web Design/Visual Design
+              </p>
+              <p className="text-gray-400 text-sm text-right">2025</p>
             </div>
           </div>
 
           {/* Xplore Events */}
-          <div className="relative group cursor-pointer">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-800">
+          <div className="group cursor-pointer">
+            <div className="aspect-[2/-5] rounded-2xl overflow-hidden bg-gray-800">
               <img
                 src="/work4.png"
                 alt="Xplore Events"
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
-            <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-              <h3 className="text-white font-semibold text-lg">Xplore Events</h3>
-              <div className="text-right">
-                <p className="text-gray-300 text-sm">Website Design/Visual Design</p>
-                <p className="text-gray-400 text-sm">2025</p>
-              </div>
+            <div className="mt-4 grid grid-cols-3 items-start">
+              <h3 className="text-white font-semibold text-lg text-left">
+                Xplore Events
+              </h3>
+              <p className="text-gray-300 text-sm text-center">
+                Website Design/Visual Design
+              </p>
+              <p className="text-gray-400 text-sm text-right">2025</p>
             </div>
           </div>
         </div>
@@ -87,7 +95,7 @@ export default function OurWork() {
         {/* See More Work Button */}
         <Button
           variant="outline"
-          className="bg-transparent border-gray-600 text-white hover:bg-gray-800 hover:border-gray-500"
+          className="bg-transparent border-white-600 text-white hover:bg-white-600 hover:border-gray-500"
         >
           See more work
         </Button>
