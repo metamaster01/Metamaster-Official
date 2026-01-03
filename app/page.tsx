@@ -3,6 +3,7 @@ import Hero from "@/components/hero";
 import Navbar from "@/components/navbar";
 import Advertisement from "@/components/advertisement";
 import Services from "@/components/service";
+import WhyChooseUs from "@/components/whychoose";
 import Image from "next/image";
 
 export default function Home() {
@@ -11,8 +12,8 @@ export default function Home() {
        <Navbar/>
        <Hero/>
        <Advertisement/>
-       
        <Services/>
+        <WhyChooseUs/>
       </>
   );
 }
