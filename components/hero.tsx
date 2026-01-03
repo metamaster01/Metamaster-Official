@@ -105,7 +105,7 @@ export default function Hero() {
             initial={{ y: 60, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.9 }}
-            className="text-sm sm:text-base tracking-widest text-white/80 uppercase"
+            className="text-sm sm:text-base tracking-widest text-white/140 uppercase"
           >
             Transform Your Mind.
           </motion.h2>

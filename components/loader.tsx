@@ -61,7 +61,7 @@ export default function Loader() {
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ delay: 3.2, duration: 0.6 }}
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black"
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gradient-to-r from-[#9A62C7] via-[#B771F1] to-[#12001f]"
     >
       {/* Logo */}
       {/* Logo + Brand Text (Grouped) */}
@@ -69,14 +69,14 @@ export default function Loader() {
   initial={{ opacity: 0, scale: 0.9 }}
   animate={{ opacity: 1, scale: 1 }}
   transition={{ duration: 0.8 }}
-  className="flex flex-col items-center gap-3 mb-6"
+  className="flex flex-col items-center gap-1 mb-2"
 >
   {/* Logo */}
   <Image
     src="/logo.png"
     alt="Meta Master Logo"
     width={550}          // 🔽 thoda smaller for balance
-    height={500}
+    height={450}
     priority
   />
   
@@ -104,7 +104,7 @@ export default function Loader() {
       {/* Loading Line */}
      <div className="relative h-[2px] w-64 overflow-hidden rounded-full bg-white/20">
         <motion.div
-          className="absolute left-0 top-0 h-full bg-gradient-to-r from-[#9B4DFF] via-[#7A5CFF] to-[#3BC9FF]"
+          className="absolute left-0 top-0 h-full bg-white"
           initial={{ width: "0%" }}
           animate={{ width: "100%" }}
           transition={{
