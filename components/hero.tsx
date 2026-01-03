@@ -56,7 +56,6 @@
 //   );
 // }
 
-
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -71,7 +70,8 @@ export default function Hero() {
   });
 
   // Parallax
-  const textY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const fade = useTransform(scrollYProgress, [0, 0.3], [1, 0.6]);
 
   return (
     <section
@@ -79,89 +79,79 @@ export default function Hero() {
       className="relative h-screen w-full overflow-hidden text-white"
     >
       {/* 🎥 Background Video */}
-      {/* <video
+      <video
         className="absolute inset-0 h-full w-full object-cover"
         src="/hero-bg.mp4"
         autoPlay
         loop
         muted
         playsInline
-      /> */}
-
-      {/* Video Dark Overlay (for readability) */}
-      {/* <div className="absolute inset-0 bg-black/40" /> */}
-
-      {/* Grain / Noise Overlay */}
-      {/* <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-[0.08] mix-blend-overlay" /> */}
-
-      {/* Floating Glow (subtle premium touch) */}
-      <motion.div
-        className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-purple-500/25 blur-3xl"
-        animate={{ x: [0, 40, 0], y: [0, 30, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/45" />
+
+      {/* Grain */}
+      <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-[0.08] mix-blend-overlay" />
 
       {/* Content */}
       <motion.div
-        style={{ y: textY }}
-        className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6"
+        style={{ y: textY, opacity: fade }}
+        className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
       >
-        <div className="ml-auto max-w-xl">
-          {/* Line-by-line Reveal */}
-          <div className="overflow-hidden">
-            <motion.h1
-              initial={{ y: 80, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1 }}
-              className="text-[clamp(2.8rem,5vw,4.5rem)] font-medium leading-tight"
-            >
-              Transform Your Mind.
-            </motion.h1>
-          </div>
-
-          <div className="overflow-hidden">
-            <motion.h1
-              initial={{ y: 80, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 1 }}
-              className="text-[clamp(2.8rem,5vw,4.5rem)] font-bold leading-tight"
-            >
-              Elevate Your Impact.
-            </motion.h1>
-          </div>
-
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="mt-6 text-sm sm:text-base leading-relaxed text-white/90"
+        {/* Line 1 */}
+        <div className="overflow-hidden">
+          <motion.h2
+            initial={{ y: 60, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.9 }}
+            className="text-sm sm:text-base tracking-widest text-white/80 uppercase"
           >
-            At Meta Master, we help you rewrite limiting beliefs, strengthen
-            emotional intelligence, and master the inner game of success — so
-            you can lead, communicate, and create with unshakable confidence.
-          </motion.p>
-
-          {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.6 }}
-            className="mt-8 flex items-center gap-6"
-          >
-            <button className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#2B0046] transition hover:scale-105">
-              Schedule Call <ArrowRight size={16} />
-            </button>
-
-            <button className="text-sm font-medium text-white/80 hover:text-white">
-              View Case Study
-            </button>
-          </motion.div>
+            Transform Your Mind.
+          </motion.h2>
         </div>
+
+        {/* Main Bold Line */}
+        <div className="overflow-hidden">
+          <motion.h1
+            initial={{ y: 80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.15, duration: 1 }}
+            className="mt-4 text-[clamp(3rem,6vw,5.5rem)] font-bold leading-tight"
+          >
+            Elevate Your Impact.
+          </motion.h1>
+        </div>
+
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.9 }}
+          className="mt-6 max-w-2xl text-sm sm:text-base leading-relaxed text-white/85"
+        >
+          At Meta Master, we help you rewire limiting beliefs, strengthen emotional intelligence, and master the inner game of success — so you can lead, communicate, and create with unshakable confidence.
+        </motion.p>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.6 }}
+          className="mt-10 flex flex-wrap items-center justify-center gap-6"
+        >
+          <button className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-[#2B0046] transition hover:scale-105">
+            Schedule Call <ArrowRight size={16} />
+          </button>
+
+          <button className="text-sm font-medium text-white/80 hover:text-white">
+            View Case Study
+          </button>
+        </motion.div>
       </motion.div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-6 left-6 text-xs text-white/80">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-white/70">
         Scroll down <span className="ml-1 animate-bounce">↓</span>
       </div>
     </section>

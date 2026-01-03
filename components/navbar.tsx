@@ -26,8 +26,8 @@ export default function Navbar() {
           <Image
             src="/logo.png"
             alt="Meta Master Logo"
-            width={56}
-            height={56}
+            width={100}
+            height={100}
             className="object-contain sm:w-[60px]"
             priority
           />
