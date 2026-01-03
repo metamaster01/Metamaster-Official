@@ -65,10 +65,13 @@ function FluidPlane() {
 
 export default function HeroWebGL() {
   return (
-    <Canvas camera={{ position: [0, 1.6, 2.8], fov: 55 }}>
+    <Canvas  
+     className="absolute inset-0 z-0" 
+     camera={{ position: [0, 0, 2.8], fov: 55 }}>
       <ambientLight intensity={0.8} />
       <directionalLight position={[2, 3, 2]} intensity={1.5} />
       <FluidPlane />
     </Canvas>
   );
 }
+
