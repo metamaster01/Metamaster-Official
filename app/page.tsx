@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar";
 import Advertisement from "@/components/advertisement";
 import Services from "@/components/service";
 import WhyChooseUs from "@/components/whychoose";
+import OurWorksSection from "@/components/ourwork";
 import Image from "next/image";
 
 export default function Home() {
@@ -13,7 +14,8 @@ export default function Home() {
        <Hero/>
        <Advertisement/>
        <Services/>
-        <WhyChooseUs/>
+       <WhyChooseUs/>
+       <OurWorksSection/>
       </>
   );
 }
