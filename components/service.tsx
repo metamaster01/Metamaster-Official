@@ -149,6 +149,75 @@ function useSeeded(n = 1) {
   return ref.current;
 }
 
+/** Section in-view hook */
+function useInViewport<T extends HTMLElement>(opts?: { rootMargin?: string; threshold?: number }) {
+  const ref = React.useRef<T | null>(null);
+  const [inView, setInView] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const io = new IntersectionObserver(
+      ([entry]) => setInView(!!entry.isIntersecting),
+      {
+        root: null,
+        rootMargin: opts?.rootMargin ?? "0px 0px -10% 0px",
+        threshold: opts?.threshold ?? 0.12,
+      }
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, [opts?.rootMargin, opts?.threshold]);
+
+  return { ref, inView };
+}
+
+/** Quantum blink controller (only runs when enabled + section is in viewport) */
+function useQuantumBlink(total: number, enabled: boolean) {
+  const reduce = usePrefersReducedMotion();
+  const coarse = useIsCoarsePointer();
+  const [active, setActive] = React.useState<number | null>(null);
+
+  React.useEffect(() => {
+    if (!enabled || reduce || coarse) {
+      setActive(null);
+      return;
+    }
+    if (!total || total < 2) return;
+
+    let alive = true;
+    let t1: number | null = null;
+    let t2: number | null = null;
+
+    const pick = () => {
+      const idx = Math.floor(Math.random() * total);
+      setActive(idx);
+
+      t1 = window.setTimeout(() => {
+        if (!alive) return;
+        setActive(null);
+      }, 360);
+
+      t2 = window.setTimeout(() => {
+        if (!alive) return;
+        pick();
+      }, 7800 + Math.random() * 5200);
+    };
+
+    pick();
+
+    return () => {
+      alive = false;
+      if (t1) window.clearTimeout(t1);
+      if (t2) window.clearTimeout(t2);
+    };
+  }, [enabled, reduce, coarse, total]);
+
+  return active;
+}
+
 const IconFrame = ({
   children,
   accent,
@@ -171,13 +240,11 @@ const IconFrame = ({
 
   return (
     <div
-      className="relative h-32 w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035]"
+      className="relative h-28 w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035] sm:h-32"
       style={{ ["--acc" as any]: ACCENT_RGB[accent] }}
     >
       {/* base wash */}
-      <div
-        className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${accentWash[accent]}`}
-      />
+      <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${accentWash[accent]}`} />
 
       {/* holo vignette */}
       <div className="pointer-events-none absolute inset-0 opacity-90 [mask-image:radial-gradient(circle_at_50%_35%,black_55%,transparent_80%)]">
@@ -224,11 +291,7 @@ const IconFrame = ({
 
       {/* variant */}
       {variant === "waves" && (
-        <svg
-          className="pointer-events-none absolute inset-0 opacity-[0.28]"
-          viewBox="0 0 320 120"
-          fill="none"
-        >
+        <svg className="pointer-events-none absolute inset-0 opacity-[0.28]" viewBox="0 0 320 120" fill="none">
           <path
             d="M0 70 C 40 50, 70 90, 110 70 C 150 52, 180 80, 220 62 C 260 45, 290 70, 320 52"
             stroke="rgba(255,255,255,0.22)"
@@ -245,20 +308,20 @@ const IconFrame = ({
       )}
 
       {/* orb */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl opacity-90 bg-[rgb(var(--acc)/0.22)]" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl opacity-70 bg-white/10" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl opacity-90 bg-[rgb(var(--acc)/0.22)] sm:h-44 sm:w-44" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl opacity-70 bg-white/10 sm:h-28 sm:w-28" />
 
       {/* rings */}
       {variant === "rings" && (
         <>
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/12 opacity-60" />
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/8 opacity-55 [mask-image:radial-gradient(circle,black_60%,transparent_76%)]" />
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-60 w-60 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/6 opacity-45 [mask-image:radial-gradient(circle,black_55%,transparent_78%)]" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/12 opacity-60 sm:h-28 sm:w-28" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/8 opacity-55 [mask-image:radial-gradient(circle,black_60%,transparent_76%)] sm:h-44 sm:w-44" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/6 opacity-45 [mask-image:radial-gradient(circle,black_55%,transparent_78%)] sm:h-60 sm:w-60" />
         </>
       )}
 
       {/* orbit dots */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 sm:h-48 sm:w-48">
         <div className="absolute inset-0 animate-[spin_10s_linear_infinite]">
           <div className="absolute left-1/2 top-0 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-white/60 shadow-[0_0_18px_rgba(255,255,255,0.25)]" />
         </div>
@@ -328,32 +391,13 @@ function TechArt({ type }: { type: Service["art"] }) {
 
   const Chip = ({ x, y }: { x: number; y: number }) => (
     <g opacity="0.9">
-      <rect
-        x={x}
-        y={y}
-        width="18"
-        height="12"
-        rx="3"
-        fill="rgba(255,255,255,0.06)"
-        stroke={S3}
-        strokeWidth="1.2"
-      />
-      <path
-        d={`M${x + 4} ${y + 6}h10`}
-        stroke={A}
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
+      <rect x={x} y={y} width="18" height="12" rx="3" fill="rgba(255,255,255,0.06)" stroke={S3} strokeWidth="1.2" />
+      <path d={`M${x + 4} ${y + 6}h10`} stroke={A} strokeWidth="1.6" strokeLinecap="round" />
     </g>
   );
 
   const Corner = ({ x, y }: { x: number; y: number }) => (
-    <path
-      d={`M${x} ${y + 10}V${y}H${x + 10}`}
-      stroke={S2}
-      strokeWidth="1.6"
-      strokeLinecap="round"
-    />
+    <path d={`M${x} ${y + 10}V${y}H${x + 10}`} stroke={S2} strokeWidth="1.6" strokeLinecap="round" />
   );
 
   switch (type) {
@@ -518,20 +562,27 @@ const services: Service[] = [
   },
 ];
 
-function ServiceCard({ item, index }: { item: Service; index: number }) {
+function ServiceCard({
+  item,
+  index,
+  blink,
+}: {
+  item: Service;
+  index: number;
+  blink: boolean;
+}) {
   const CardTag: any = item.href ? Link : "div";
   const cardProps = item.href ? { href: item.href, "aria-label": item.title } : {};
   const tiltRef = useTilt();
   const { ref: revealRef, shown } = useReveal({
     rootMargin: "0px 0px -14% 0px",
     threshold: 0.16,
-    once: false, // set true if you want reveal only once
+    once: false,
   });
 
   const reduce = usePrefersReducedMotion();
-  const entryKind = index % 3; // 0 shards, 1 glitch, 2 pop
+  const entryKind = index % 3;
 
-  // merge refs
   const setRefs = React.useCallback(
     (node: HTMLDivElement | null) => {
       (tiltRef as any).current = node;
@@ -545,19 +596,28 @@ function ServiceCard({ item, index }: { item: Service; index: number }) {
       {...cardProps}
       className={[
         "group relative block overflow-hidden rounded-2xl border border-white/10",
-        "bg-white/[0.04] p-6 backdrop-blur",
+        "bg-white/[0.04] p-5 backdrop-blur",
         "shadow-[0_0_0_1px_rgba(255,255,255,0.03)]",
         "transition duration-300",
         "hover:-translate-y-1 hover:border-white/15 hover:bg-white/[0.06]",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50 focus-visible:ring-offset-0",
+        blink ? "quantum-blink" : "",
       ].join(" ")}
     >
+      {/* quantum overlay */}
+      {!reduce && blink && (
+        <div className="pointer-events-none absolute inset-0 z-[1]">
+          <div className="absolute inset-[-20%] animate-[quantumFlash_0.55s_ease-out_infinite] bg-[conic-gradient(from_90deg,rgba(255,255,255,0.0),rgba(255,255,255,0.18),rgba(255,255,255,0.0),rgba(168,85,247,0.22),rgba(255,255,255,0.0))]" />
+          <div className="absolute inset-0 animate-[quantumNoise_0.3s_steps(2)_infinite] opacity-[0.12] [background-image:repeating-linear-gradient(90deg,rgba(255,255,255,0.4)_0px,rgba(255,255,255,0.4)_1px,transparent_1px,transparent_3px)]" />
+        </div>
+      )}
+
       {/* rare animated gradient edge */}
       <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-60">
         <div className="absolute inset-[-2px] rounded-2xl bg-[conic-gradient(from_180deg,rgba(255,255,255,0.0),rgba(255,255,255,0.10),rgba(255,255,255,0.0),rgba(168,85,247,0.22),rgba(255,255,255,0.0))] blur-[1px] animate-[borderScan_6s_linear_infinite]" />
       </div>
 
-      {/* NEW: UNIQUE SCROLL ENTRY FX LAYERS */}
+      {/* entry fx */}
       {!reduce && (
         <>
           {entryKind === 0 && (
@@ -601,11 +661,11 @@ function ServiceCard({ item, index }: { item: Service; index: number }) {
         </>
       )}
 
-      {/* scroll reveal wrapper + tilt */}
+      {/* reveal wrapper + tilt */}
       <div
         ref={setRefs}
         className={[
-          "relative flex h-full flex-col",
+          "relative z-[2] flex h-full flex-col",
           "transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(.2,.8,.2,1)] will-change-transform",
           shown ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-10 blur-[10px]",
         ].join(" ")}
@@ -614,26 +674,8 @@ function ServiceCard({ item, index }: { item: Service; index: number }) {
           transform: shown ? "perspective(900px) rotateX(var(--rx)) rotateY(var(--ry))" : undefined,
         }}
       >
-        {/* bottom tint */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-purple-500/15 via-purple-500/0 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-purple-500/15 via-purple-500/0 to-transparent" />
 
-        {/* hover glow */}
-        <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
-        </div>
-
-        {/* moving spotlight */}
-        <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100">
-          <div
-            className="absolute -inset-12"
-            style={{
-              background:
-                "radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,0.16), transparent 46%)",
-            }}
-          />
-        </div>
-
-        {/* Icon art */}
         <div className="[transform-style:preserve-3d]">
           <div className="[transform:translateZ(22px)]">
             <IconFrame accent={item.accent} variant={item.variant}>
@@ -642,14 +684,18 @@ function ServiceCard({ item, index }: { item: Service; index: number }) {
           </div>
         </div>
 
-        <h3 className="mt-4 text-lg font-semibold tracking-tight text-white">{item.title}</h3>
+        <h3 className="mt-4 text-base font-semibold tracking-tight text-white sm:text-lg">
+          {item.title}
+        </h3>
 
-        <p className="mt-3 text-sm leading-relaxed text-white/65">{item.description}</p>
+        <p className="mt-2 text-xs leading-relaxed text-white/65 sm:mt-3 sm:text-sm">
+          {item.description}
+        </p>
 
-        <div className="mt-auto pt-8">
+        <div className="mt-auto pt-6 sm:pt-8">
           <span
             className={[
-              "ml-auto inline-flex h-12 w-12 items-center justify-center rounded-full",
+              "ml-auto inline-flex h-11 w-11 items-center justify-center rounded-full",
               "bg-white/90 text-black shadow-sm",
               "transition-transform duration-200",
               "group-hover:scale-[1.06] active:scale-[0.98]",
@@ -665,9 +711,18 @@ function ServiceCard({ item, index }: { item: Service; index: number }) {
 }
 
 export default function Services() {
+  // ✅ blink only when section is in viewport
+  const { ref: sectionRef, inView } = useInViewport<HTMLElement>({
+    rootMargin: "0px 0px -15% 0px",
+    threshold: 0.12,
+  });
+
+  // ✅ smaller cards: tighter spacing + smaller padding + smaller icon frame already
+  const activeBlink = useQuantumBlink(services.length, inView);
+
   return (
     <>
-      <section className="relative overflow-hidden bg-[#0b0b0d] px-6 py-16">
+      <section ref={sectionRef} className="relative overflow-hidden bg-[#0b0b0d] px-6 py-14">
         {/* Background */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.10),transparent_45%),radial-gradient(circle_at_85%_25%,rgba(168,85,247,0.14),transparent_45%)]" />
@@ -678,7 +733,7 @@ export default function Services() {
 
         <div className="relative mx-auto w-full max-w-6xl">
           {/* Top row */}
-          <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-start">
+          <div className="grid gap-7 md:grid-cols-[1fr_auto] md:items-start">
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/50">
                 What we do
@@ -704,20 +759,18 @@ export default function Services() {
             </div>
           </div>
 
-          {/* Cards */}
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Cards (tighter + fits better in one screen) */}
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {services.map((s, idx) => (
-              <ServiceCard key={s.title} item={s} index={idx} />
+              <ServiceCard key={s.title} item={s} index={idx} blink={activeBlink === idx} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ✅ INLINE GLOBAL CSS (your keyframes kept + added new ones) */}
       <style jsx global>{`
         /* =========================
-           YOUR ORIGINAL KEYFRAMES
-           (kept exactly as you gave)
+           ORIGINAL KEYFRAMES
         ========================== */
         @keyframes floaty {
           0%,
@@ -730,7 +783,6 @@ export default function Services() {
             opacity: 1;
           }
         }
-
         @keyframes scan {
           0% {
             transform: translateY(-120%);
@@ -739,7 +791,6 @@ export default function Services() {
             transform: translateY(220%);
           }
         }
-
         @keyframes glitch {
           0% {
             transform: translateX(-30%);
@@ -757,7 +808,6 @@ export default function Services() {
             opacity: 0;
           }
         }
-
         @keyframes circuit {
           0% {
             background-position: -260px 0;
@@ -766,7 +816,6 @@ export default function Services() {
             background-position: 260px 0;
           }
         }
-
         @keyframes circuitY {
           0% {
             background-position: 0 -220px;
@@ -775,7 +824,6 @@ export default function Services() {
             background-position: 0 220px;
           }
         }
-
         @keyframes burst {
           0% {
             transform: translate(-50%, -50%) scale(1);
@@ -795,7 +843,6 @@ export default function Services() {
             opacity: 0;
           }
         }
-
         @keyframes flicker {
           0%,
           100% {
@@ -817,10 +864,6 @@ export default function Services() {
             opacity: 0.55;
           }
         }
-
-        /* =========================
-           ADDED: border scan used by your UI
-        ========================== */
         @keyframes borderScan {
           0% {
             transform: rotate(0deg);
@@ -831,7 +874,7 @@ export default function Services() {
         }
 
         /* =========================
-           ADDED: UNIQUE SCROLL ENTRY FX
+           ENTRY FX
         ========================== */
         .shard {
           position: absolute;
@@ -972,6 +1015,42 @@ export default function Services() {
           100% {
             transform: scale(1);
             opacity: 0;
+          }
+        }
+
+        /* =========================
+           QUANTUM BLINK (EXTRA)
+        ========================== */
+        .quantum-blink {
+          box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06),
+            0 0 32px rgba(168, 85, 247, 0.22),
+            0 0 64px rgba(255, 255, 255, 0.05);
+        }
+        @keyframes quantumFlash {
+          0% {
+            transform: rotate(0deg) scale(1);
+            opacity: 0.25;
+          }
+          35% {
+            opacity: 0.95;
+          }
+          100% {
+            transform: rotate(140deg) scale(1.12);
+            opacity: 0;
+          }
+        }
+        @keyframes quantumNoise {
+          0% {
+            transform: translateX(0);
+            filter: blur(0px);
+          }
+          50% {
+            transform: translateX(-2px);
+            filter: blur(0.5px);
+          }
+          100% {
+            transform: translateX(2px);
+            filter: blur(0px);
           }
         }
       `}</style>
