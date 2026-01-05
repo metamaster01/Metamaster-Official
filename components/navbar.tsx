@@ -18,7 +18,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="w-full bg-gradient-to-r from-[#A327F0] to-[#2B0046] px-4 sm:px-6 lg:px-10 py-4">
+    <nav className="w-full bg-gradient-to-r from-[#8a0fd7] to-[#2B0046]  px-4 sm:px-6 lg:px-2 py-4 lg:py-[2]">
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         
         {/* Logo */}
@@ -26,9 +26,9 @@ export default function Navbar() {
           <Image
             src="/logo.png"
             alt="Meta Master Logo"
-            width={100}
+            width={120}
             height={100}
-            className="object-contain sm:w-[60px]"
+            className="object-contain sm:w-[60px] md:w-[120px]"
             priority
           />
         </Link>
