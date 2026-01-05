@@ -8,6 +8,8 @@ import OurWorksSection from "@/components/ourwork";
 import Image from "next/image";
 import AboutUs from "@/components/aboutus";
 import Ribbon from "@/components/ribbion";
+import Testimonial from "../components/testimonal";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
@@ -20,6 +22,8 @@ export default function Home() {
        <Services/>
        <WhyChooseUs/>
        <OurWorksSection/>
+       <Testimonial/>
+       <Footer/>
       </>
   );
 }

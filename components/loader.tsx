@@ -75,9 +75,10 @@ export default function Loader() {
   <Image
     src="/logo.png"
     alt="Meta Master Logo"
-    width={550}          // 🔽 thoda smaller for balance
+    width={550}          
     height={450}
     priority
+     className="w-[260px] sm:w-[320px] md:w-[420px] lg:w-[520px] h-auto"
   />
   
 
