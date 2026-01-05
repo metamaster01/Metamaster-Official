@@ -51,7 +51,7 @@ const Newsletter = () => {
               Join the newsletter
             </h2>
             <p className="mt-3 text-gray-600 text-sm md:text-base max-w-sm">
-              Weekly curated insights, zero noise, premium content only.
+              Subscribe for weekly updates. No spams ever!
             </p>
           </motion.div>
 
