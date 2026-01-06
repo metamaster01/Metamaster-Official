@@ -17,7 +17,6 @@ export default function CallToAction() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
 
-  /* ===== Scroll ===== */
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -75,7 +74,7 @@ export default function CallToAction() {
         }}
       />
 
-      {/* ===== CARD WRAPPER ===== */}
+    
       <motion.div
         onMouseMove={handleMouseMove}
         style={{ scale, opacity, y, filter: `blur(${blur})` }}
@@ -106,7 +105,7 @@ export default function CallToAction() {
           {/* ===== INTERNAL TEXTURE ===== */}
           <div className="pointer-events-none absolute inset-0 opacity-[0.18]">
             <Image
-              src="/images/purple-pattern.png"
+              src="/purple-pattern.png"
               alt="Luxury texture"
               fill
               className="object-cover mix-blend-multiply"
