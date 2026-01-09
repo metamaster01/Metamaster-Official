@@ -240,7 +240,7 @@ const IconFrame = ({
 
   return (
     <div
-      className="relative h-28 w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035] sm:h-32"
+      className="relative h-28 w-full overflow-hidden rounded-2xl border border-black/10 bg-black/[0.035] sm:h-32"
       style={{ ["--acc" as any]: ACCENT_RGB[accent] }}
     >
       {/* base wash */}
@@ -381,17 +381,6 @@ const IconFrame = ({
   );
 };
 
-const Chip = ({ x, y, S3, A }: { x: number; y: number; S3: string; A: string }) => (
-  <g opacity="0.9">
-    <rect x={x} y={y} width="18" height="12" rx="3" fill="rgba(255,255,255,0.06)" stroke={S3} strokeWidth="1.2" />
-    <path d={`M${x + 4} ${y + 6}h10`} stroke={A} strokeWidth="1.6" strokeLinecap="round" />
-  </g>
-);
-
-const Corner = ({ x, y, S2 }: { x: number; y: number; S2: string }) => (
-  <path d={`M${x} ${y + 10}V${y}H${x + 10}`} stroke={S2} strokeWidth="1.6" strokeLinecap="round" />
-);
-
 function TechArt({ type }: { type: Service["art"] }) {
   const S = "rgba(255,255,255,0.72)";
   const S2 = "rgba(255,255,255,0.32)";
@@ -400,15 +389,26 @@ function TechArt({ type }: { type: Service["art"] }) {
   const AF = "rgb(var(--acc) / 0.18)";
   const AF2 = "rgb(var(--acc) / 0.10)";
 
+  const Chip = ({ x, y }: { x: number; y: number }) => (
+    <g opacity="0.9">
+      <rect x={x} y={y} width="18" height="12" rx="3" fill="rgba(255,255,255,0.06)" stroke={S3} strokeWidth="1.2" />
+      <path d={`M${x + 4} ${y + 6}h10`} stroke={A} strokeWidth="1.6" strokeLinecap="round" />
+    </g>
+  );
+
+  const Corner = ({ x, y }: { x: number; y: number }) => (
+    <path d={`M${x} ${y + 10}V${y}H${x + 10}`} stroke={S2} strokeWidth="1.6" strokeLinecap="round" />
+  );
+
   switch (type) {
     case "social":
       return (
         <svg width="176" height="96" viewBox="0 0 176 96" fill="none">
           <rect x="18" y="18" width="98" height="58" rx="10" fill={AF2} stroke={S} strokeWidth="1.7" />
-          <Corner x={18} y={18} S2={S2} />
-          <Corner x={106} y={18} S2={S2} />
-          <Corner x={18} y={66} S2={S2} />
-          <Corner x={106} y={66} S2={S2} />
+          <Corner x={18} y={18} />
+          <Corner x={106} y={18} />
+          <Corner x={18} y={66} />
+          <Corner x={106} y={66} />
           <path d="M32 34h46" stroke={S2} strokeWidth="1.7" strokeLinecap="round" />
           <path d="M32 44h62" stroke={S2} strokeWidth="1.7" strokeLinecap="round" />
           <path d="M32 54h40" stroke={S2} strokeWidth="1.7" strokeLinecap="round" />
@@ -418,8 +418,8 @@ function TechArt({ type }: { type: Service["art"] }) {
           <path d="M140 38l10 10" stroke={A} strokeWidth="1.7" strokeLinecap="round" />
           <path d="M132 40l-4 16" stroke={S2} strokeWidth="1.7" strokeLinecap="round" />
           <path d="M150 50l-18 10" stroke={S2} strokeWidth="1.7" strokeLinecap="round" />
-          <Chip x={124} y={16} S3={S3} A={A} />
-          <Chip x={146} y={70} S3={S3} A={A} />
+          <Chip x={124} y={16} />
+          <Chip x={146} y={70} />
         </svg>
       );
     case "seo":
@@ -451,8 +451,8 @@ function TechArt({ type }: { type: Service["art"] }) {
           <path d="M34 40h32" stroke={S2} strokeWidth="1.7" strokeLinecap="round" />
           <path d="M34 50h48" stroke={S3} strokeWidth="1.7" strokeLinecap="round" />
           <rect x="34" y="56" width="22" height="8" rx="4" fill={AF} stroke={A} strokeWidth="1.2" />
-          <Chip x={22} y={18} S3={S3} A={A} />
-          <Chip x={44} y={74} S3={S3} A={A} />
+          <Chip x={22} y={18} />
+          <Chip x={44} y={74} />
         </svg>
       );
     case "brand":
@@ -469,8 +469,8 @@ function TechArt({ type }: { type: Service["art"] }) {
           <path d="M40 60h92" stroke={A} strokeWidth="1.6" strokeLinecap="round" opacity="0.55" />
           <path d="M44 66h84" stroke={S3} strokeWidth="1.6" strokeLinecap="round" opacity="0.5" />
           <circle cx="74" cy="56" r="10" fill={AF} stroke={A} strokeWidth="1.7" />
-          <Chip x={124} y={22} S3={S3} A={A} />
-          <Chip x={18} y={66} S3={S3} A={A} />
+          <Chip x={124} y={22} />
+          <Chip x={18} y={66} />
         </svg>
       );
     case "ugc":
@@ -486,8 +486,8 @@ function TechArt({ type }: { type: Service["art"] }) {
             stroke={A}
             strokeWidth="1.7"
           />
-          <Chip x={22} y={22} S3={S3} A={A} />
-          <Chip x={118} y={70} S3={S3} A={A} />
+          <Chip x={22} y={22} />
+          <Chip x={118} y={70} />
         </svg>
       );
     case "video":
@@ -722,14 +722,19 @@ export default function Services() {
 
   return (
     <>
-      <section ref={sectionRef} className="relative overflow-hidden bg-[#0b0b0d] px-6 py-14">
+      <section
+  ref={sectionRef}
+  className="relative overflow-hidden bg-[#050008] px-6 py-14"
+>
+
         {/* Background */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.10),transparent_45%),radial-gradient(circle_at_85%_25%,rgba(168,85,247,0.14),transparent_45%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.06),transparent_35%,rgba(0,0,0,0.55))]" />
-          <div className="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(to_right,rgba(255,255,255,0.35)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.35)_1px,transparent_1px)] [background-size:56px_56px]" />
-          <div className="absolute inset-0 opacity-[0.08] mix-blend-overlay [background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22180%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.35%22/></svg>')]" />
-        </div>
+  <div className="absolute inset-0 bg-[#020008]" />
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(15,23,90,0.55),transparent_50%),radial-gradient(circle_at_82%_28%,rgba(46,16,101,0.65),transparent_52%)]" />
+  <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(2,0,20,0.85),rgba(2,0,20,0.92),rgba(0,0,0,0.98))]" />
+  <div className="absolute inset-0 opacity-[0.045] [background-image:linear-gradient(to_right,rgba(67,56,202,0.35)_1px,transparent_1px),linear-gradient(to_bottom,rgba(67,56,202,0.35)_1px,transparent_1px)] [background-size:64px_64px]" />
+  <div className="absolute inset-0 opacity-[0.14] mix-blend-overlay [background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%221.1%22 numOctaves=%223%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.45%22/></svg>')]" />
+</div>
 
         <div className="relative mx-auto w-full max-w-6xl">
           {/* Top row */}
@@ -769,254 +774,7 @@ export default function Services() {
       </section>
 
       <style jsx global>{`
-        /* =========================
-           ORIGINAL KEYFRAMES
-        ========================== */
-        @keyframes floaty {
-          0%,
-          100% {
-            transform: translate3d(0, 0, 0);
-            opacity: 0.55;
-          }
-          50% {
-            transform: translate3d(0, -10px, 0);
-            opacity: 1;
-          }
-        }
-        @keyframes scan {
-          0% {
-            transform: translateY(-120%);
-          }
-          100% {
-            transform: translateY(220%);
-          }
-        }
-        @keyframes glitch {
-          0% {
-            transform: translateX(-30%);
-            opacity: 0;
-          }
-          20% {
-            opacity: 0.9;
-          }
-          50% {
-            transform: translateX(30%);
-            opacity: 0.35;
-          }
-          100% {
-            transform: translateX(60%);
-            opacity: 0;
-          }
-        }
-        @keyframes circuit {
-          0% {
-            background-position: -260px 0;
-          }
-          100% {
-            background-position: 260px 0;
-          }
-        }
-        @keyframes circuitY {
-          0% {
-            background-position: 0 -220px;
-          }
-          100% {
-            background-position: 0 220px;
-          }
-        }
-        @keyframes burst {
-          0% {
-            transform: translate(-50%, -50%) scale(1);
-            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.25);
-            opacity: 0;
-          }
-          20% {
-            opacity: 1;
-          }
-          100% {
-            transform: translate(-50%, -50%) scale(1);
-            box-shadow: 40px -12px 0 0 rgba(255, 255, 255, 0.12),
-              -36px 18px 0 0 rgba(255, 255, 255, 0.1),
-              18px 36px 0 0 rgba(255, 255, 255, 0.1),
-              -18px -34px 0 0 rgba(255, 255, 255, 0.08),
-              0 0 0 34px rgba(255, 255, 255, 0);
-            opacity: 0;
-          }
-        }
-        @keyframes flicker {
-          0%,
-          100% {
-            opacity: 0.65;
-          }
-          8% {
-            opacity: 0.35;
-          }
-          12% {
-            opacity: 0.8;
-          }
-          20% {
-            opacity: 0.45;
-          }
-          28% {
-            opacity: 0.9;
-          }
-          60% {
-            opacity: 0.55;
-          }
-        }
-        @keyframes borderScan {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
 
-        /* =========================
-           ENTRY FX
-        ========================== */
-        .shard {
-          position: absolute;
-          inset: -10%;
-          border-radius: 24px;
-          background: linear-gradient(
-            120deg,
-            rgba(255, 255, 255, 0.1),
-            rgba(255, 255, 255, 0),
-            rgba(168, 85, 247, 0.18)
-          );
-          filter: blur(2px);
-          opacity: 0.85;
-        }
-        .shard-a {
-          clip-path: polygon(0 0, 60% 0, 40% 55%, 0 60%);
-        }
-        .shard-b {
-          clip-path: polygon(40% 0, 100% 0, 100% 70%, 55% 50%);
-        }
-        .shard-c {
-          clip-path: polygon(0 60%, 45% 50%, 100% 70%, 100% 100%, 0 100%);
-        }
-        .shard-in {
-          animation: shardIn 0.55s cubic-bezier(0.2, 0.9, 0.2, 1) both;
-        }
-        .shard-out {
-          animation: shardOut 0.38s cubic-bezier(0.2, 0.9, 0.2, 1) both;
-        }
-        @keyframes shardIn {
-          0% {
-            transform: translate3d(0, 18px, 0) scale(1.05) rotate(-1deg);
-            opacity: 1;
-          }
-          60% {
-            transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-            opacity: 0.95;
-          }
-          100% {
-            opacity: 0;
-          }
-        }
-        @keyframes shardOut {
-          0% {
-            opacity: 0.6;
-          }
-          100% {
-            opacity: 0;
-          }
-        }
-
-        .glitchScan {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.1), transparent);
-          transform: translateY(-120%);
-          opacity: 0.9;
-        }
-        .glitch-in {
-          animation: glitchScanIn 0.65s ease both;
-        }
-        .glitch-out {
-          opacity: 0;
-          transition: opacity 0.2s ease;
-        }
-        @keyframes glitchScanIn {
-          0% {
-            transform: translateY(-140%);
-            opacity: 0;
-          }
-          20% {
-            opacity: 0.9;
-          }
-          100% {
-            transform: translateY(200%);
-            opacity: 0;
-          }
-        }
-
-        .rgbSplit {
-          position: absolute;
-          inset: 0;
-          opacity: 0.55;
-          mix-blend-mode: screen;
-          background: radial-gradient(circle at 30% 40%, rgba(255, 0, 120, 0.16), transparent 55%),
-            radial-gradient(circle at 70% 60%, rgba(0, 220, 255, 0.16), transparent 55%);
-          filter: blur(1px);
-        }
-        .rgb-in {
-          animation: rgbIn 0.55s steps(2) both;
-        }
-        .rgb-out {
-          opacity: 0;
-          transition: opacity 0.18s ease;
-        }
-        @keyframes rgbIn {
-          0% {
-            transform: translateX(-10px);
-            opacity: 0;
-          }
-          20% {
-            opacity: 0.8;
-          }
-          60% {
-            transform: translateX(10px);
-            opacity: 0.25;
-          }
-          100% {
-            transform: translateX(20px);
-            opacity: 0;
-          }
-        }
-
-        .popMist {
-          position: absolute;
-          inset: -20%;
-          border-radius: 30px;
-          background: radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.14), transparent 60%);
-          opacity: 0.9;
-          filter: blur(6px);
-        }
-        .pop-in {
-          animation: popIn 0.55s cubic-bezier(0.15, 1.05, 0.25, 1) both;
-        }
-        .pop-out {
-          opacity: 0;
-          transition: opacity 0.18s ease;
-        }
-        @keyframes popIn {
-          0% {
-            transform: scale(0.92);
-            opacity: 0;
-          }
-          55% {
-            transform: scale(1.03);
-            opacity: 0.9;
-          }
-          100% {
-            transform: scale(1);
-            opacity: 0;
-          }
-        }
 
         /* =========================
            QUANTUM BLINK (EXTRA)
