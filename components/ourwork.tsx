@@ -87,7 +87,7 @@ export default function OurWorksSection() {
 
             <div className="mt-6 md:flex md:justify-end">
               <motion.a
-                href="#"
+                href="our-work"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-medium text-black shadow-lg transition"

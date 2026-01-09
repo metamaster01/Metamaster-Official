@@ -8,9 +8,9 @@ import CallToAction from "@/components/calltoaction";
 import Newsletter from "@/components/newsletter";
 
 const projects = [
-  { title: "Zaina Collection – Fashion eCommerce", category: " A digital store that feels like luxury.", image: "/projects/1.png" },
-  { title: "Xplore events – Event management", category: "a digital experience that celebrates every moment.", image: "/projects/2.png" },
-  { title: "Chakra Crystals-Wellness", category: " Real creators, real growth.", image: "/projects/3.png" },
+  { title: "Zaina Collection – Fashion eCommerce", category: " A digital store that feels like luxury.", image: "/projects/1.png" ,slug: "zaina-collection", },
+  { title: "Xplore events – Event management", category: "a digital experience that celebrates every moment.", image: "/projects/2.png" ,slug: "xplore-events", },
+  { title: "Chakra Crystals-Wellness", category: " Real creators, real growth.", image: "/projects/3.png" , slug: "chakra-crystals", },
 
   { title: "Zaina Collection – Fashion eCommerce", category: " A digital store that feels like luxury.", image: "/projects/1.png" },
   { title: "Xplore events – Event management", category: "a digital experience that celebrates every moment.", image: "/projects/2.png" },
@@ -95,3 +95,5 @@ export default function OurWorksPage() {
     </>
   );
 }
+
+
