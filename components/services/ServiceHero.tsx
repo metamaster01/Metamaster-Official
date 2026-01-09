@@ -217,7 +217,7 @@ export default function ServiceHero({ service }: Props) {
   }, [])
 
   return (
-    <div className="min-h-screen overflow-x-hidden mb-12">
+    <div className="min-h-screen overflow-x-hidden mb-12 mt-16 md:mt-24 ">
       <section ref={heroRef} className="relative pt-16 pb-20 bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden ">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
