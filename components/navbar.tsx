@@ -656,12 +656,12 @@ export default function Navbar() {
         fixed top-0 z-50 w-full transition-all duration-300
         ${
           scrolled
-            ? "bg-gradient-to-r from-[#8a0fd7]/90 to-[#2B0046]/90 backdrop-blur-xl shadow-lg"
+            ? "bg-gradient-to-r from-[#8a0fd7]/50 to-[#2B0046]/60 backdrop-blur-xl shadow-lg"
             : "bg-transparent"
         }
       `}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 md:py-1">
 
         {/* ---------------- LOGO ---------------- */}
         <Link href="/" className="shrink-0">
@@ -669,13 +669,13 @@ export default function Navbar() {
             src="/logo.png"
             alt="Meta Master Logo"
             width={120}
-            height={60}
+            height={80}
             priority
           />
         </Link>
 
         {/* ================= DESKTOP NAV ================= */}
-        <ul className="hidden lg:flex items-center gap-8 text-sm text-white">
+        <ul className="hidden lg:flex items-center gap-8 text-md text-white">
 
           {navLinks.map((item) => {
             if (!item.dropdown) {
@@ -706,7 +706,7 @@ export default function Navbar() {
 
                 <div
                   className="
-                    absolute left-0 top-full mt-3 w-[320px]
+                    absolute left-0 top-full w-[320px]
                     rounded-xl bg-[#14001f]/95 backdrop-blur-xl
                     border border-white/10 shadow-2xl
                     opacity-0 scale-95 translate-y-2 pointer-events-none
