@@ -381,6 +381,17 @@ const IconFrame = ({
   );
 };
 
+const Chip = ({ x, y, S3, A }: { x: number; y: number; S3: string; A: string }) => (
+  <g opacity="0.9">
+    <rect x={x} y={y} width="18" height="12" rx="3" fill="rgba(255,255,255,0.06)" stroke={S3} strokeWidth="1.2" />
+    <path d={`M${x + 4} ${y + 6}h10`} stroke={A} strokeWidth="1.6" strokeLinecap="round" />
+  </g>
+);
+
+const Corner = ({ x, y, S2 }: { x: number; y: number; S2: string }) => (
+  <path d={`M${x} ${y + 10}V${y}H${x + 10}`} stroke={S2} strokeWidth="1.6" strokeLinecap="round" />
+);
+
 function TechArt({ type }: { type: Service["art"] }) {
   const S = "rgba(255,255,255,0.72)";
   const S2 = "rgba(255,255,255,0.32)";
@@ -389,26 +400,15 @@ function TechArt({ type }: { type: Service["art"] }) {
   const AF = "rgb(var(--acc) / 0.18)";
   const AF2 = "rgb(var(--acc) / 0.10)";
 
-  const Chip = ({ x, y }: { x: number; y: number }) => (
-    <g opacity="0.9">
-      <rect x={x} y={y} width="18" height="12" rx="3" fill="rgba(255,255,255,0.06)" stroke={S3} strokeWidth="1.2" />
-      <path d={`M${x + 4} ${y + 6}h10`} stroke={A} strokeWidth="1.6" strokeLinecap="round" />
-    </g>
-  );
-
-  const Corner = ({ x, y }: { x: number; y: number }) => (
-    <path d={`M${x} ${y + 10}V${y}H${x + 10}`} stroke={S2} strokeWidth="1.6" strokeLinecap="round" />
-  );
-
   switch (type) {
     case "social":
       return (
         <svg width="176" height="96" viewBox="0 0 176 96" fill="none">
           <rect x="18" y="18" width="98" height="58" rx="10" fill={AF2} stroke={S} strokeWidth="1.7" />
-          <Corner x={18} y={18} />
-          <Corner x={106} y={18} />
-          <Corner x={18} y={66} />
-          <Corner x={106} y={66} />
+          <Corner x={18} y={18} S2={S2} />
+          <Corner x={106} y={18} S2={S2} />
+          <Corner x={18} y={66} S2={S2} />
+          <Corner x={106} y={66} S2={S2} />
           <path d="M32 34h46" stroke={S2} strokeWidth="1.7" strokeLinecap="round" />
           <path d="M32 44h62" stroke={S2} strokeWidth="1.7" strokeLinecap="round" />
           <path d="M32 54h40" stroke={S2} strokeWidth="1.7" strokeLinecap="round" />
@@ -418,8 +418,8 @@ function TechArt({ type }: { type: Service["art"] }) {
           <path d="M140 38l10 10" stroke={A} strokeWidth="1.7" strokeLinecap="round" />
           <path d="M132 40l-4 16" stroke={S2} strokeWidth="1.7" strokeLinecap="round" />
           <path d="M150 50l-18 10" stroke={S2} strokeWidth="1.7" strokeLinecap="round" />
-          <Chip x={124} y={16} />
-          <Chip x={146} y={70} />
+          <Chip x={124} y={16} S3={S3} A={A} />
+          <Chip x={146} y={70} S3={S3} A={A} />
         </svg>
       );
     case "seo":
@@ -451,8 +451,8 @@ function TechArt({ type }: { type: Service["art"] }) {
           <path d="M34 40h32" stroke={S2} strokeWidth="1.7" strokeLinecap="round" />
           <path d="M34 50h48" stroke={S3} strokeWidth="1.7" strokeLinecap="round" />
           <rect x="34" y="56" width="22" height="8" rx="4" fill={AF} stroke={A} strokeWidth="1.2" />
-          <Chip x={22} y={18} />
-          <Chip x={44} y={74} />
+          <Chip x={22} y={18} S3={S3} A={A} />
+          <Chip x={44} y={74} S3={S3} A={A} />
         </svg>
       );
     case "brand":
@@ -469,8 +469,8 @@ function TechArt({ type }: { type: Service["art"] }) {
           <path d="M40 60h92" stroke={A} strokeWidth="1.6" strokeLinecap="round" opacity="0.55" />
           <path d="M44 66h84" stroke={S3} strokeWidth="1.6" strokeLinecap="round" opacity="0.5" />
           <circle cx="74" cy="56" r="10" fill={AF} stroke={A} strokeWidth="1.7" />
-          <Chip x={124} y={22} />
-          <Chip x={18} y={66} />
+          <Chip x={124} y={22} S3={S3} A={A} />
+          <Chip x={18} y={66} S3={S3} A={A} />
         </svg>
       );
     case "ugc":
@@ -486,8 +486,8 @@ function TechArt({ type }: { type: Service["art"] }) {
             stroke={A}
             strokeWidth="1.7"
           />
-          <Chip x={22} y={22} />
-          <Chip x={118} y={70} />
+          <Chip x={22} y={22} S3={S3} A={A} />
+          <Chip x={118} y={70} S3={S3} A={A} />
         </svg>
       );
     case "video":
