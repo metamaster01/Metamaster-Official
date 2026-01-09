@@ -6,6 +6,116 @@ import Image from "next/image";
 export default function CaseClient({ data }: { data: any }) {
   if (!data) return null;
 
+  function TwoColumnSection({
+  title,
+  description,
+  items,
+  numbered = false,
+}: {
+  title: string;
+  description?: string;
+  items?: string[];
+  numbered?: boolean;
+}) {
+  if (!items?.length) return null;
+
+  return (
+    <section className="relative max-w-7xl mx-auto px-6 py-24">
+      <div className="grid gap-16 md:grid-cols-2 items-start">
+
+        {/* LEFT CONTENT */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl sm:text-4xl font-semibold mb-6">
+            {title}
+          </h2>
+
+          {description && (
+            <p className="max-w-sm text-sm leading-relaxed text-white/60">
+              {description}
+            </p>
+          )}
+        </motion.div>
+
+        {/* RIGHT LIST */}
+        <motion.ul
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            show: {
+              transition: {
+                staggerChildren: 0.12, // ✨ stagger reveal
+              },
+            },
+          }}
+          className="space-y-6"
+        >
+          {items.map((item, i) => (
+            <motion.li
+              key={i}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="
+                group relative pl-6 pb-6
+                text-sm sm:text-base text-white/90
+              "
+            >
+              {/* Bullet */}
+              <span className="absolute left-0 top-2 h-1.5 w-1.5 rounded-full bg-white" />
+
+              Number (Approach section)
+              {numbered && (
+                <span className="mr-2 font-semibold text-purple-400">
+                  {i + 1}.
+                </span>
+              )}
+
+              {/* Text */}
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                {item}
+              </span>
+
+              {/* Animated Divider */}
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                viewport={{ once: true }}
+                className="
+                  absolute left-0 bottom-0
+                  h-px w-full origin-left
+                  bg-gradient-to-r from-transparent via-white/30 to-transparent
+                "
+              />
+
+              {/* Hover Glow */}
+              <span
+                className="
+                  pointer-events-none absolute inset-0
+                  opacity-0 group-hover:opacity-100
+                  transition duration-500
+                  bg-gradient-to-r from-purple-500/10 via-transparent to-purple-500/10
+                  blur-xl
+                "
+              />
+            </motion.li>
+          ))}
+        </motion.ul>
+
+      </div>
+    </section>
+  );
+}
+
   return (
     <main className="relative overflow-hidden bg-gradient-to-r from-[#12001f] via-[#0e001a] to-[#12001f] text-white">
 
@@ -44,75 +154,153 @@ export default function CaseClient({ data }: { data: any }) {
       </section>
 
       {/* ABOUT BRAND */}
-      <section className="relative max-w-7xl mx-auto px-6 pb-28 grid gap-16 md:grid-cols-2 items-start">
-        
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="group"
+<section className="relative max-w-7xl mx-auto px-6 pb-32 grid gap-20 lg:grid-cols-2 items-start">
+
+  {/* LEFT IMAGE */}
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.7 }}
+  >
+    <h2 className="mb-8 text-xl font-semibold tracking-wide">
+      About the Brand
+    </h2>
+
+    <div className="overflow-hidden rounded-2xl">
+      <Image
+        src={data.hero_image}
+        alt={data.title}
+        width={520}
+        height={680}
+        className="h-[420px] w-full object-cover rounded-2xl transition-transform duration-700 hover:scale-105"
+      />
+    </div>
+  </motion.div>
+
+  {/* RIGHT CONTENT */}
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.7, delay: 0.1 }}
+    className="flex flex-col"
+  >
+    {/* Brand Logo Card */}
+    <div className="mb-10 rounded-2xl  p-10 flex items-center justify-center">
+      <Image
+        src={data.brand_logo}
+        alt="Brand logo"
+        width={300}
+        height={120}
+        className="object-contain"
+      />
+    </div>
+
+    {/* About Text */}
+    <p className="mb-10 max-w-xl text-sm leading-relaxed text-white/80">
+      {data.about}
+    </p>
+
+    {/* Tags */}
+    <div className="flex flex-wrap gap-3">
+      {data.tags?.map((tag: string, i: number) => (
+        <span
+          key={i}
+          className="
+            rounded-full
+            bg-purple-700/20
+            px-4 py-1
+            text-xs
+            text-purple-300
+            backdrop-blur
+            transition
+            hover:bg-purple-700/30
+          "
         >
-          <h2 className="mb-6 text-xl font-semibold tracking-wide">
-            About the Brand
-          </h2>
+          {tag}
+        </span>
+      ))}
+    </div>
+  </motion.div>
 
-          <div className="overflow-hidden rounded-xl">
-            <Image
-              src={data.hero_image}
-              alt={data.title}
-              width={600}
-              height={500}
-              className="rounded-xl transition-transform duration-700 group-hover:scale-105"
-            />
-          </div>
-        </motion.div>
+</section>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-        >
-          <Image
-            src={data.brand_logo}
-            alt="Brand logo"
-            width={320}
-            height={100}
-            className="mb-10 rounded-xl opacity-90"
-          />
 
-          <p className="mb-8 text-sm leading-relaxed text-white/80">
-            {data.about}
-          </p>
-
-          <div className="flex flex-wrap gap-3">
-            {data.tags?.map((tag: string, i: number) => (
-              <span
-                key={i}
-                className="rounded-full border border-purple-500/30 bg-purple-700/10 px-4 py-1 text-xs text-purple-300 backdrop-blur transition hover:bg-purple-700/20"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-
-      {/* CHALLENGE */}
+     
       <TwoColumnSection
         title="The Challenge"
         description={data.challenge_intro}
         items={data.challenge}
       />
 
-      {/* APPROACH */}
-      <TwoColumnSection
-        title="Our Approach"
-        description={data.approach_intro}
-        items={data.approach}
-        numbered
-      />
+     {/* OUR APPROACH */}
+{data.approach?.length > 0 && (
+  <section className="relative max-w-7xl mx-auto px-6 py-28">
+    <div className="grid gap-16 md:grid-cols-2 items-start">
+
+      {/* LEFT */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className="text-3xl sm:text-4xl font-semibold mb-6">
+          Our Approach
+        </h2>
+
+        <p className="max-w-sm text-sm leading-relaxed text-white/60">
+          {data.approach_intro}
+        </p>
+      </motion.div>
+
+      {/* RIGHT */}
+      <div className="space-y-14">
+        {data.approach.map(
+          (
+            section: {
+              title: string;
+              points: string[];
+            },
+            index: number
+          ) => (
+            <motion.div
+              key={section.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="pb-10 border-b border-white/10"
+            >
+              {/* Heading */}
+              <h3 className="mb-4 text-lg font-semibold flex items-center gap-3">
+                <span className="text-purple-400">
+                  {index + 1}.
+                </span>
+                {section.title}
+              </h3>
+
+              {/* Points */}
+              <ul className="space-y-2">
+                {section.points.map((point, i) => (
+                  <li
+                    key={i}
+                    className="text-sm text-white/70 leading-relaxed"
+                  >
+                    • {point}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )
+        )}
+      </div>
+
+    </div>
+  </section>
+)}
+
 
       {/* RESULTS */}
       <TwoColumnSection
@@ -136,8 +324,9 @@ export default function CaseClient({ data }: { data: any }) {
               <Image
                 src={data.brand_logo}
                 alt="Brand"
-                width={320}
+                width={200}
                 height={140}
+              className="object-contain"
               />
             </motion.div>
 
