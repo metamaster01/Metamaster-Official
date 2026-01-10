@@ -50,7 +50,7 @@ export default function CaseClient({ data }: { data: any }) {
             hidden: {},
             show: {
               transition: {
-                staggerChildren: 0.12, // ✨ stagger reveal
+                staggerChildren: 0.12, 
               },
             },
           }}
@@ -69,7 +69,7 @@ export default function CaseClient({ data }: { data: any }) {
                 text-sm sm:text-base text-white/90
               "
             >
-              {/* Bullet */}
+              
               <span className="absolute left-0 top-2 h-1.5 w-1.5 rounded-full bg-white" />
 
               Number (Approach section)
@@ -79,7 +79,7 @@ export default function CaseClient({ data }: { data: any }) {
                 </span>
               )}
 
-              {/* Text */}
+              
               <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
                 {item}
               </span>
@@ -309,51 +309,90 @@ export default function CaseClient({ data }: { data: any }) {
         items={data.results}
       />
 
-      {/* TESTIMONIAL */}
-      {data.testimonial_text && (
-        <section className="relative max-w-7xl mx-auto px-6 py-28">
-          <div className="grid gap-8 lg:grid-cols-2 items-stretch">
+     {/* TESTIMONIAL */}
+{data.testimonial_text && (
+  <section className="relative max-w-7xl mx-auto px-6 py-32">
+    
+    {/* Heading */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="mb-12 text-center"
+    >
+      <h2 className="text-2xl sm:text-3xl font-semibold tracking-wide">
+        What Our Client Says
+      </h2>
+      <p className="mt-2 text-sm text-white/60">
+        We measure success by the impact we create for our clients.
+      </p>
+    </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="flex items-center justify-center rounded-2xl bg-[#2f52b2] p-10"
-            >
-              <Image
-                src={data.brand_logo}
-                alt="Brand"
-                width={200}
-                height={140}
-              className="object-contain"
-              />
-            </motion.div>
+    {/* Card */}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -6 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="
+        group relative overflow-hidden rounded-3xl 
+        bg-gradient-to-br from-[#2f52b2] via-[#4a2aa6] to-[#5b1fa6]
+        p-10 sm:p-14
+      "
+    >
+      {/* Glow animation */}
+      <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100">
+        <div className="absolute inset-0 bg-[radial-gradient(700px_circle_at_30%_20%,rgba(255,255,255,0.2),transparent_60%)]" />
+      </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="relative rounded-2xl bg-gradient-to-br from-purple-700 to-indigo-700 p-10 shadow-xl"
-            >
-              <p className="text-sm leading-relaxed text-white/95">
-                “{data.testimonial_text}”
-              </p>
+      <div className="relative z-10 grid gap-12 lg:grid-cols-[1fr_1.3fr] items-center">
+        
+        {/* BRAND */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center justify-center"
+        >
+          <Image
+            src={data.brand_logo}
+            alt="Brand logo"
+            width={360}
+            height={140}
+            className="object-contain opacity-90 transition-transform duration-700 group-hover:scale-105"
+          />
+        </motion.div>
 
-              <div className="mt-8">
-                <p className="font-semibold tracking-wide">
-                  {data.testimonial_author}
-                </p>
-                <p className="text-xs text-white/70">
-                  {data.testimonial_role}
-                </p>
-              </div>
-            </motion.div>
+        {/* TESTIMONIAL TEXT */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="space-y-6"
+        >
+          <p className="text-sm sm:text-base leading-relaxed text-white/95">
+            “{data.testimonial_text}”
+          </p>
 
+          <div>
+            <p className="font-semibold tracking-wide">
+              {data.testimonial_author}
+            </p>
+            <p className="text-xs text-white/70">
+              {data.testimonial_role}
+            </p>
           </div>
-        </section>
-      )}
+        </motion.div>
+
+      </div>
+    </motion.div>
+  </section>
+)}
+
     </main>
   );
 }

@@ -3,6 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link"
+
+const MotionLink = motion(Link);
 
 type WorkItem = {
   title: string;
@@ -10,6 +13,7 @@ type WorkItem = {
   desc: string;
   image: string;
   alt: string;
+  slug: string; 
 };
 
 const works: WorkItem[] = [
@@ -19,6 +23,7 @@ const works: WorkItem[] = [
     desc: "A digital store that feels like luxury.",
     image: "/projects/1.png",
     alt: "Fashion portrait",
+    slug: "zaina-collection",
   },
   {
     title: "Xplore Events",
@@ -26,6 +31,7 @@ const works: WorkItem[] = [
     desc: "A digital experience that celebrates every moment.",
     image: "/projects/2.png",
     alt: "Event crowd",
+    slug: "xplore-events",
   },
   {
     title: "Chakra Crystals",
@@ -33,6 +39,7 @@ const works: WorkItem[] = [
     desc: "Real creators, real growth.",
     image: "/projects/3.png",
     alt: "Wellness crystals",
+    slug:"chakra-crystals"
   },
 ];
 
@@ -85,16 +92,16 @@ export default function OurWorksSection() {
               identities.
             </p>
 
-            <div className="mt-6 md:flex md:justify-end">
-              <motion.a
-                href="our-work"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-medium text-black shadow-lg transition"
-              >
-                See more
-              </motion.a>
-            </div>
+           <div className="mt-6 md:flex md:justify-end">
+  <MotionLink
+    href="/our-work"          // ✅ absolute path
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-medium text-black shadow-lg transition"
+  >
+    See more
+  </MotionLink>
+</div>
           </motion.div>
         </motion.div>
 
@@ -106,48 +113,54 @@ export default function OurWorksSection() {
           viewport={{ once: true, amount: 0.25 }}
           className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3"
         >
-          {works.map((w) => (
-            <motion.article
-              key={w.title}
-              variants={item}
-              whileHover={{ y: -8 }}
-              transition={{ type: "spring", stiffness: 240, damping: 20 }}
-              className="group relative rounded-2xl bg-white/[0.05] ring-1 ring-white/10 backdrop-blur-xl"
-            >
-              <div className="relative overflow-hidden rounded-2xl p-4">
-                <div className="relative overflow-hidden rounded-xl">
-                  <MotionImage
-                    src={w.image}
-                    alt={w.alt}
-                    width={1600}
-                    height={900}
-                    className="h-48 w-full rounded-xl object-cover"
-                    whileHover={{ scale: 1.08 }}
-                    transition={{
-                      duration: 0.6,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition group-hover:opacity-100" />
-                </div>
+         {works.map((w) => (
+  <Link
+    key={w.slug}
+    href={`/our-work/${w.slug}`}
+    className="block"
+  >
+    <motion.article
+      variants={item}
+      whileHover={{ y: -8 }}
+      transition={{ type: "spring", stiffness: 240, damping: 20 }}
+      className="group relative cursor-pointer rounded-2xl bg-white/[0.05] ring-1 ring-white/10 backdrop-blur-xl"
+    >
+      <div className="relative overflow-hidden rounded-2xl p-4">
+        <div className="relative overflow-hidden rounded-xl">
+          <MotionImage
+            src={w.image}
+            alt={w.alt}
+            width={1600}
+            height={900}
+            className="h-48 w-full rounded-xl object-cover"
+            whileHover={{ scale: 1.08 }}
+            transition={{
+              duration: 0.6,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition group-hover:opacity-100" />
+        </div>
 
-                <div className="mt-4 space-y-2">
-                  <h3 className="text-base font-medium tracking-tight">
-                    {w.title}{" "}
-                    <span className="font-normal text-white/70">
-                      – {w.subtitle}
-                    </span>
-                  </h3>
-                  <p className="text-sm text-white/60">{w.desc}</p>
-                </div>
-              </div>
+        <div className="mt-4 space-y-2">
+          <h3 className="text-base font-medium tracking-tight">
+            {w.title}{" "}
+            <span className="font-normal text-white/70">
+              – {w.subtitle}
+            </span>
+          </h3>
+          <p className="text-sm text-white/60">{w.desc}</p>
+        </div>
+      </div>
 
-              {/* Glow hover */}
-              <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition group-hover:opacity-100">
-                <div className="absolute inset-0 bg-[radial-gradient(800px_circle_at_50%_0%,rgba(255,255,255,0.12),transparent_55%)]" />
-              </div>
-            </motion.article>
-          ))}
+      {/* Glow hover */}
+      <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition group-hover:opacity-100">
+        <div className="absolute inset-0 bg-[radial-gradient(800px_circle_at_50%_0%,rgba(255,255,255,0.12),transparent_55%)]" />
+      </div>
+    </motion.article>
+  </Link>
+))}
+
         </motion.div>
       </div>
     </section>
