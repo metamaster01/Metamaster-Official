@@ -156,7 +156,7 @@ export default function AboutUs() {
         >
           <path
             fill="#ba2bf3"
-            fillOpacity="0.54"
+            fillOpacity="0.73"
             d="M0,192L80,170.7C160,149,320,107,480,96C640,85,800,107,960,138.7C1120,171,1280,213,1360,234.7L1440,256V320H0Z"
           />
         </motion.svg>
