@@ -13,6 +13,8 @@ const brands = [
   "/brands/7.png",
   "/brands/8.png",
   "/brands/9.png",
+  "/brands/chakra.png",
+  "/brands/xplore.png",
 ];
 
 export default function Advertise() {

@@ -56,15 +56,21 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Loader() {
+
+
+  
   return (
     <motion.div
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ delay: 3.2, duration: 0.6 }}
+
+
+      
       className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gradient-to-r from-[#9A62C7] via-[#B771F1] to-[#12001f]"
     >
       {/* Logo */}
-      {/* Logo + Brand Text (Grouped) */}
+   
 <motion.div
   initial={{ opacity: 0, scale: 0.9 }}
   animate={{ opacity: 1, scale: 1 }}
@@ -88,7 +94,7 @@ export default function Loader() {
       text-4xl sm:text-5xl font-bold tracking-widest
       bg-gradient-to-r from-[#9B4DFF] via-[#7A5CFF] to-[#3BC9FF]
       bg-clip-text text-transparent
-      leading-none        // 🔥 extra vertical gap hataata hai
+      leading-none        
     "
   >
     META MASTER
@@ -117,3 +123,5 @@ export default function Loader() {
     </motion.div>
   );
 }
+
+
