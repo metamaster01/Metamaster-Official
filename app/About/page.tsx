@@ -3,6 +3,8 @@ import Navbar from "@/components/navbar";
 import AboutMetaMaster from "@/components/aboutmetamaster";
 import Advertise from "@/components/advertisement";
 import WhoWe from "@/components/whowe";
+import WhyChooseMetamaster from "@/components/whychoose";
+import MeetFounder from "@/components/meetfounder";
 import CallToAction from "@/components/calltoaction";
 import Testimonial from "@/components/testimonal";
 import Newsletter from "@/components/newsletter";
@@ -17,6 +19,8 @@ export default function Home() {
          <AboutMetaMaster/>
         <Advertise/>
         <WhoWe/>
+        <WhyChooseMetamaster/>
+        <MeetFounder/>
       <CallToAction/>
        <Testimonial/>
         <Newsletter/>
