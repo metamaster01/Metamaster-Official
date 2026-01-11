@@ -5,6 +5,7 @@ import Advertise from "@/components/advertisement";
 import WhoWe from "@/components/whowe";
 import WhyChooseMetamaster from "@/components/whychoose";
 import MeetFounder from "@/components/meetfounder";
+import MeetOurTeam from "@/components/meetourteam";
 import CallToAction from "@/components/calltoaction";
 import Testimonial from "@/components/testimonal";
 import Newsletter from "@/components/newsletter";
@@ -21,6 +22,7 @@ export default function Home() {
         <WhoWe/>
         <WhyChooseMetamaster/>
         <MeetFounder/>
+        <MeetOurTeam/>
       <CallToAction/>
        <Testimonial/>
         <Newsletter/>
