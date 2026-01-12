@@ -37,7 +37,7 @@ export default function Testimonial() {
     setActive((p) => (p === testimonials.length - 1 ? 0 : p + 1));
 
   return (
-    <section className="w-full bg-gradient-to-r from-[#12001f] via-[#0e001a] to-[#12001f] py-24 overflow-hidden">
+    <section className="w-full bg-gradient-to-r from-[#12001f] via-[#0e001a] to-[#12001f] py-4 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
 
         

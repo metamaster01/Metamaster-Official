@@ -1,4 +1,7 @@
 @import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800;900&family=Inter:wght@400;500;600&display=swap'); */
+
+
 
 :root {
   --background: #ffffff;
@@ -62,4 +65,5 @@ body {
 .animate-floatReverse {
   animation: floatReverse 16s ease-in-out infinite;
 }
+
 
