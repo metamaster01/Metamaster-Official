@@ -166,19 +166,16 @@
 // }
 
 
-
-
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import gsap from "gsap";
 
-/* 🔥 Loader ke baad hero start delay */
-const HERO_START_DELAY = 3.4;
 
-/* ---------- WORD REVEAL (NO variants) ---------- */
+/* ---------- WORD REVEAL ---------- */
 function RevealWords({
   text,
   delay,
@@ -211,11 +208,25 @@ function RevealWords({
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
-  const [startAnim, setStartAnim] = useState(false);
 
-  /* 🔥 Start ONLY after loader */
+  const [startAnim, setStartAnim] = useState(false);
+  const [baseDelay, setBaseDelay] = useState(0); // 🔥 KEY FIX
+
+  /* ---------- FIXED LOGIC ---------- */
   useEffect(() => {
-    if (localStorage.getItem("loaderDone") === "true") {
+    const loaderDone = localStorage.getItem("loaderDone") === "true";
+    const heroPlayed = sessionStorage.getItem("heroPlayed") === "true";
+
+    if (loaderDone && !heroPlayed) {
+      // 🎬 FIRST TIME ONLY
+      setBaseDelay(4.0);
+      setTimeout(() => {
+        setStartAnim(true);
+        sessionStorage.setItem("heroPlayed", "true");
+      }, 100);
+    } else {
+      // ⚡ RETURN TO HOME / REFRESH
+      setBaseDelay(0);
       setStartAnim(true);
     }
   }, []);
@@ -228,12 +239,17 @@ export default function Hero() {
   const textY = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const fade = useTransform(scrollYProgress, [0, 0.3], [1, 0.6]);
 
+
+    const waveRef = useRef<HTMLDivElement>(null);
+
+ 
+
   return (
     <section
       ref={ref}
       className="relative h-screen w-full overflow-hidden text-white"
     >
-      {/* 🎥 Background Video */}
+      {/* 🎥 Background Video */} 
       <video
         className="absolute inset-0 h-full w-full object-cover"
         src="/hero-bg.mp4"
@@ -242,6 +258,12 @@ export default function Hero() {
         muted
         playsInline
       />
+
+
+
+       
+
+      
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/45" />
@@ -255,10 +277,10 @@ export default function Hero() {
         className="relative z-10 flex h-full flex-col items-center justify-center px-8 text-center"
       >
         {/* Line 1 */}
-        <h2 className="text-xl sm:text-base tracking-widest uppercase text-white">
+        <h2 className="text-sm sm:text-base tracking-widest uppercase text-white">
           <RevealWords
             text="Transform Your Mind."
-            delay={HERO_START_DELAY}
+            delay={baseDelay}
             start={startAnim}
           />
         </h2>
@@ -267,7 +289,7 @@ export default function Hero() {
         <h1 className="mt-4 text-[clamp(3rem,6vw,5.5rem)] font-bold leading-tight">
           <RevealWords
             text="Elevate Your Impact."
-            delay={HERO_START_DELAY + 0.3}
+            delay={baseDelay + 1.5}
             start={startAnim}
           />
         </h1>
@@ -276,7 +298,7 @@ export default function Hero() {
         <p className="mt-6 max-w-2xl text-sm sm:text-base leading-relaxed text-white/85">
           <RevealWords
             text="At Meta Master, we help you rewire limiting beliefs, strengthen emotional intelligence, and master the inner game of success — so you can lead, communicate, and create with unshakable confidence."
-            delay={HERO_START_DELAY + 0.8}
+            delay={baseDelay + 1.7}
             start={startAnim}
           />
         </p>
@@ -287,7 +309,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
-              delay: HERO_START_DELAY + 2.7,
+              delay: baseDelay + 1.8,
               duration: 0.6,
             }}
             className="mt-10 flex flex-wrap items-center justify-center gap-8"
@@ -296,25 +318,11 @@ export default function Hero() {
               Schedule Call <ArrowRight size={16} />
             </button>
 
-           <Link href="/our-work">
-  <span
-    className="
-      text-sm font-semibold text-white/80
-      px-8 py-3
-      rounded-full
-      border border-white/20
-      transition-all duration-300
-      hover:text-[#2B0046]
-      hover:bg-white
-      hover:border-white
-      hover:backdrop-blur
-      cursor-pointer
-    "
-  >
-    View Case Study
-  </span>
-</Link>
-
+            <Link href="/our-work">
+              <span className="text-sm font-semibold text-white/80 px-8 py-3 rounded-full border border-white/20 transition-all duration-300 hover:text-[#2B0046] hover:bg-white hover:border-white cursor-pointer">
+                View Case Study
+              </span>
+            </Link>
           </motion.div>
         )}
       </motion.div>

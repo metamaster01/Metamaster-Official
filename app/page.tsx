@@ -19,7 +19,7 @@ export default function Home() {
   
   return (
     <>
-       <Slider/>
+       {/* <Slider/> */}
        <Navbar/>
        <Hero/>
        <Advertisement/>

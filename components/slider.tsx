@@ -19,7 +19,7 @@ export default function IntroSlider() {
       initial={{ x: "-100%" }}
       animate={{ x: "0%" }}
       exit={{ x: "100%" }}
-      transition={{ duration: 1, ease: "easeInOut" }}
+      transition={{ duration: 0.2, ease: "easeInOut" }}
       className="
         fixed inset-0 z-[9998]
         flex items-center justify-center
