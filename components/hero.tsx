@@ -219,7 +219,7 @@ export default function Hero() {
 
     if (loaderDone && !heroPlayed) {
       // 🎬 FIRST TIME ONLY
-      setBaseDelay(4.0);
+      setBaseDelay(3.8);
       setTimeout(() => {
         setStartAnim(true);
         sessionStorage.setItem("heroPlayed", "true");
