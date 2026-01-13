@@ -238,7 +238,7 @@ export default function AboutUs() {
                 transition={{ duration: 0.5, ease: "easeOut" }}
               >
                 <Link
-                  href="/about"
+                  href="/about-us"
                   className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-sm font-medium text-black transition hover:scale-105"
                 >
                   More about us

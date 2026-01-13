@@ -595,7 +595,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 /* ---------------- NAV LINKS ---------------- */
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "About us", href: "/about" },
+  { name: "About us", href: "/about-us" },
   { name: "Services", href: "/services", dropdown: true },
   { name: "Our works", href: "/our-work" },
   { name: "Testimonials", href: "/testimonials" },

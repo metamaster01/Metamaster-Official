@@ -82,7 +82,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm text-white/70">
               {[
-                { name: "About", href: "/about" },
+                { name: "About", href: "/about-us" },
                 { name: "Service", href: "/services" },
                 { name: "Case Study", href: "/case-study" },
                 { name: "Testimonials", href: "/testimonials" },
