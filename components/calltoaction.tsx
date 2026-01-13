@@ -60,7 +60,7 @@ export default function CallToAction() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden px-4 py-44"
+      className="relative w-full overflow-hidden px-4 py-6 md:py-44"
     >
       {/* ===== BACKGROUND GRADIENT ===== */}
       <motion.div
@@ -132,9 +132,9 @@ export default function CallToAction() {
             className="pointer-events-none absolute inset-0"
             style={{
               background: useTransform(
-                [smoothX, smoothY, glowColor],
-                ([x, y, c]) =>
-                  `radial-gradient(760px at ${x}px ${y}px, ${c}, transparent 70%)`
+                [smoothX, smoothY],
+                ([x, y]) =>
+                  glowColor.get() ? `radial-gradient(760px at ${x}px ${y}px, ${glowColor.get()}, transparent 70%)` : "transparent"
               ),
             }}
           />
