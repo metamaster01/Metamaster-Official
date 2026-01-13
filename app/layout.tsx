@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import AppWrapper from "@/components/AppWraper";
+import AppWrapper from "@/components/AppWrapper";
+import { Analytics } from '@vercel/analytics/next';
+
 
 import { Red_Hat_Display, Inter } from 'next/font/google'
 
@@ -48,6 +50,7 @@ export default function RootLayout({
  
         <AppWrapper>
           {children}
+          <Analytics />
         </AppWrapper>
 
       </body>
