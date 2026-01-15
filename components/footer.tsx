@@ -165,7 +165,7 @@ export default function Footer() {
             </a>
 
            <a
-  href="https://www.google.com/maps?q=Nagpur,+Maharashtra,+India"
+  href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x820be3bf00a02ff7:0x5d3cad063e2b9fa4?entry=s&sa=X&ved=2ahUKEwii0bXZn42SAxWmSmwGHVyqNhIQ4kB6BAghEAA&hl=en"
   target="_blank"
   rel="noopener noreferrer"
   className="
@@ -178,8 +178,8 @@ export default function Footer() {
     hover:after:w-full
   "
 >
-  <MapPin size={16} />
-  <span>Nagpur, Maharashtra, India</span>
+  <MapPin size={66} />
+  <span>Office No. 302, Hingna Rd, near Pandurang Mate Sabha Gruh, IC Chowk, Lokmanya Nagar, Nagpur, Nildoh ct, Maharashtra 440016</span>
 </a>
 
           </motion.div>
