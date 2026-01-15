@@ -164,10 +164,24 @@ export default function Footer() {
               <span>aman@metamaster.com</span>
             </a>
 
-            <div className="flex items-center gap-3 text-sm text-white/70">
-              <MapPin size={16} />
-              <span>Nagpur, Maharashtra, India</span>
-            </div>
+           <a
+  href="https://www.google.com/maps?q=Nagpur,+Maharashtra,+India"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    relative inline-flex items-center gap-3
+    text-sm text-white/70
+    hover:text-white transition
+    after:absolute after:left-0 after:-bottom-1
+    after:h-[1px] after:w-0 after:bg-white
+    after:transition-all after:duration-300
+    hover:after:w-full
+  "
+>
+  <MapPin size={16} />
+  <span>Nagpur, Maharashtra, India</span>
+</a>
+
           </motion.div>
         </div>
 
