@@ -14,12 +14,14 @@ import  Blogs from "@/components/blogs";
 import  Newsletter from "@/components/newsletter";
 import Footer from "@/components/footer";
 import Slider from "@/components/slider"
+import EnquiryPopup from "@/components/enquiryform";
 
 export default function Home() {
   
   return (
     <>
        {/* <Slider/> */}
+       <EnquiryPopup/>
        <Navbar/>
        <Hero/>
        <Advertisement/>

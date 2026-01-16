@@ -148,7 +148,7 @@ export default function Footer() {
 
             <a
               href="tel:+919529770498"
-              className="relative inline-flex items-center gap-3 text-sm text-white/70 hover:text-white transition
+              className="relative inline-flex items-center gap-5 text-sm text-white/70 hover:text-white transition
               after:absolute after:left-0 after:-bottom-1 after:h-[1px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
             >
               <Phone size={16} />
@@ -157,7 +157,7 @@ export default function Footer() {
 
             <a
               href="mailto:aman@metamaster.com"
-              className="relative inline-flex items-center gap-3 text-sm text-white/70 hover:text-white transition
+              className="relative inline-flex items-center gap-5 text-sm text-white/70 hover:text-white transition
               after:absolute after:left-0 after:-bottom-1 after:h-[1px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
             >
               <Mail size={16} />
@@ -169,7 +169,7 @@ export default function Footer() {
   target="_blank"
   rel="noopener noreferrer"
   className="
-    relative inline-flex items-center gap-3
+    relative inline-flex items-center gap-5
     text-sm text-white/70
     hover:text-white transition
     after:absolute after:left-0 after:-bottom-1
