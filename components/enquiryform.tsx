@@ -120,7 +120,7 @@ export default function EnquiryPopup() {
               {/* IMAGE */}
               <div className="relative hidden md:block h-full bg-gradient-to-br from-[#12001f] via-[#0e001a] to-[#12001f]">
                 <Image
-                  src="/enquiry.jpg"
+                  src="/enquiry.png"
                   alt="Enquiry"
                   fill
                   className="object-cover object-contain"
