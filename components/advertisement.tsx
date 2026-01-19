@@ -49,7 +49,7 @@ export default function Advertise() {
       <div className="w-full px-6">
         {/* Heading */}
         <p className="mb-4 text-center text-xs sm:text-sm tracking-wide text-white/70">
-          Trusted by the biggest brands
+          Trusted by the startups
         </p>
 
         {/* Carousel */}
