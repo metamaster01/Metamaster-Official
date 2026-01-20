@@ -22,7 +22,7 @@ export default function EnquiryPopup() {
     const timer = setTimeout(() => {
       setOpen(true);
       sessionStorage.setItem("enquiryPopupShown", "true");
-    }, 4800); // loader ke baad
+    }, 9600); // loader ke baad
 
     return () => {
       clearTimeout(timer);

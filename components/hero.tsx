@@ -110,14 +110,202 @@
 // }
 
 
+
+
+
+
+
+// "use client";
+
+// import { motion, useScroll, useTransform } from "framer-motion";
+// import { ArrowRight } from "lucide-react";
+// import { useEffect, useRef, useState } from "react";
+// import Link from "next/link";
+// import gsap from "gsap";
+
+
+// /* ---------- WORD REVEAL ---------- */
+// function RevealWords({
+//   text,
+//   delay,
+//   start,
+// }: {
+//   text: string;
+//   delay: number;
+//   start: boolean;
+// }) {
+//   return (
+//     <span className="inline-flex flex-wrap justify-center gap-x-2 overflow-hidden">
+//       {text.split(" ").map((word, i) => (
+//         <motion.span
+//           key={i}
+//           initial={{ y: "120%", opacity: 0 }}
+//           animate={start ? { y: 0, opacity: 1 } : {}}
+//           transition={{
+//             delay: delay + i * 0.08,
+//             duration: 0.7,
+//             ease: [0.22, 1, 0.36, 1],
+//           }}
+//           className="inline-block"
+//         >
+//           {word}
+//         </motion.span>
+//       ))}
+//     </span>
+//   );
+// }
+
+// export default function Hero() {
+//   const ref = useRef<HTMLDivElement>(null);
+
+//   const [startAnim, setStartAnim] = useState(false);
+//   const [baseDelay, setBaseDelay] = useState(0); // 🔥 KEY FIX
+
+//   /* ---------- FIXED LOGIC ---------- */
+//   useEffect(() => {
+//     const loaderDone = localStorage.getItem("loaderDone") === "true";
+//     const heroPlayed = sessionStorage.getItem("heroPlayed") === "true";
+
+//     if (loaderDone && !heroPlayed) {
+//       // 🎬 FIRST TIME ONLY
+//       setBaseDelay(3.8);
+//       setTimeout(() => {
+//         setStartAnim(true);
+//         sessionStorage.setItem("heroPlayed", "true");
+//       }, 100);
+//     } else {
+//       // ⚡ RETURN TO HOME / REFRESH
+//       setBaseDelay(0);
+//       setStartAnim(true);
+//     }
+//   }, []);
+
+//   const { scrollYProgress } = useScroll({
+//     target: ref,
+//     offset: ["start start", "end start"],
+//   });
+
+//   const textY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+//   const fade = useTransform(scrollYProgress, [0, 0.3], [1, 0.6]);
+
+
+//     const waveRef = useRef<HTMLDivElement>(null);
+
+ 
+
+//   return (
+//     <section
+//       ref={ref}
+//       className="relative h-screen w-full overflow-hidden text-white"
+//     >
+//       {/* 🎥 Background Video */} 
+//       <video
+//         className="absolute inset-0 h-full w-full object-cover"
+//         src="/hero-bg.mp4"
+//         autoPlay
+//         loop
+//         muted
+//         playsInline
+//       />
+
+
+
+       
+
+      
+
+//       {/* Overlay */}
+//       <div className="absolute inset-0 bg-black/45" />
+
+//       {/* Grain */}
+//       <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-[0.08] mix-blend-overlay" />
+
+//       {/* Content */}
+//       <motion.div
+//         style={{ y: textY, opacity: fade }}
+//         className="relative z-10 flex h-full flex-col items-center justify-center px-8 text-center"
+//       >
+//         {/* Line 1 */}
+//         <h2 className="text-sm sm:text-base tracking-widest uppercase text-white">
+//           <RevealWords
+//             text="Transform Your Mind."
+//             delay={baseDelay}
+//             start={startAnim}
+//           />
+//         </h2>
+
+//         {/* Main Heading */}
+//         <h1 className="mt-4 text-[clamp(3rem,6vw,5.5rem)] font-bold leading-tight">
+//           <RevealWords
+//             text="Elevate Your Impact."
+//             delay={baseDelay + 1.5}
+//             start={startAnim}
+//           />
+//         </h1>
+
+//         {/* Description */}
+//         <p className="mt-6 max-w-2xl text-sm sm:text-base leading-relaxed text-white/85">
+//           <RevealWords
+//             text="At Meta Master, we help you rewire limiting beliefs, strengthen emotional intelligence, and master the inner game of success — so you can lead, communicate, and create with unshakable confidence."
+//             delay={baseDelay + 1.7}
+//             start={startAnim}
+//           />
+//         </p>
+
+//         {/* CTA */}
+//         {startAnim && (
+//           <motion.div
+//             initial={{ opacity: 0, y: 30 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{
+//               delay: baseDelay + 1.8,
+//               duration: 0.6,
+//             }}
+//             className="mt-10 flex flex-wrap items-center justify-center gap-8"
+//           >
+//             <button className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-[#2B0046] transition hover:scale-105">
+//               Get Free Growth Audit <ArrowRight size={16} />
+//             </button>
+
+//             <Link href="/our-work">
+//               <span className="text-sm font-semibold text-white/80 px-8 py-3 rounded-full border border-white/20 transition-all duration-300 hover:text-[#2B0046] hover:bg-white hover:border-white cursor-pointer">
+//                 View Case Study
+//               </span>
+//             </Link>
+//           </motion.div>
+//         )}
+//       </motion.div>
+
+//       {/* Scroll Indicator */}
+//       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-white/70">
+//         Scroll down <span className="ml-1 animate-bounce">↓</span>
+//       </div>
+//     </section>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import gsap from "gsap";
-
 
 /* ---------- WORD REVEAL ---------- */
 function RevealWords({
@@ -137,8 +325,8 @@ function RevealWords({
           initial={{ y: "120%", opacity: 0 }}
           animate={start ? { y: 0, opacity: 1 } : {}}
           transition={{
-            delay: delay + i * 0.08,
-            duration: 0.7,
+            delay: delay + i * 0.06,
+            duration: 0.6,
             ease: [0.22, 1, 0.36, 1],
           }}
           className="inline-block"
@@ -152,24 +340,21 @@ function RevealWords({
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
-
   const [startAnim, setStartAnim] = useState(false);
-  const [baseDelay, setBaseDelay] = useState(0); // 🔥 KEY FIX
+  const [baseDelay, setBaseDelay] = useState(0);
 
-  /* ---------- FIXED LOGIC ---------- */
+  /* ---------- LOADER AWARE LOGIC ---------- */
   useEffect(() => {
     const loaderDone = localStorage.getItem("loaderDone") === "true";
     const heroPlayed = sessionStorage.getItem("heroPlayed") === "true";
 
     if (loaderDone && !heroPlayed) {
-      // 🎬 FIRST TIME ONLY
-      setBaseDelay(3.8);
+      setBaseDelay(3.6);
       setTimeout(() => {
         setStartAnim(true);
         sessionStorage.setItem("heroPlayed", "true");
       }, 100);
     } else {
-      // ⚡ RETURN TO HOME / REFRESH
       setBaseDelay(0);
       setStartAnim(true);
     }
@@ -180,20 +365,15 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const textY = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const fade = useTransform(scrollYProgress, [0, 0.3], [1, 0.6]);
-
-
-    const waveRef = useRef<HTMLDivElement>(null);
-
- 
+  const textY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const fade = useTransform(scrollYProgress, [0, 0.3], [1, 0.65]);
 
   return (
     <section
       ref={ref}
       className="relative h-screen w-full overflow-hidden text-white"
     >
-      {/* 🎥 Background Video */} 
+      {/* 🎥 Background Video */}
       <video
         className="absolute inset-0 h-full w-full object-cover"
         src="/hero-bg.mp4"
@@ -203,46 +383,41 @@ export default function Hero() {
         playsInline
       />
 
-
-
-       
-
-      
-
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/45" />
+      <div className="absolute inset-0 bg-black/55" />
 
       {/* Grain */}
       <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-[0.08] mix-blend-overlay" />
 
-      {/* Content */}
+      {/* CONTENT */}
       <motion.div
         style={{ y: textY, opacity: fade }}
-        className="relative z-10 flex h-full flex-col items-center justify-center px-8 text-center"
+        className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
       >
-        {/* Line 1 */}
-        <h2 className="text-sm sm:text-base tracking-widest uppercase text-white">
-          <RevealWords
-            text="Transform Your Mind."
-            delay={baseDelay}
-            start={startAnim}
-          />
-        </h2>
+        {/* Eyebrow */}
+        <motion.span
+          initial={{ opacity: 0, y: 10 }}
+          animate={startAnim ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: baseDelay, duration: 0.6 }}
+          className="mb-5 inline-block rounded-full border border-white/20 px-4 py-1 text-xs tracking-wide text-white/80"
+        >
+          Performance Marketing & Growth Agency
+        </motion.span>
 
-        {/* Main Heading */}
-        <h1 className="mt-4 text-[clamp(3rem,6vw,5.5rem)] font-bold leading-tight">
+        {/* H1 */}
+        <h1 className="max-w-5xl text-[clamp(2.8rem,6vw,5.2rem)] font-semibold leading-[1.05] tracking-tight">
           <RevealWords
-            text="Elevate Your Impact."
-            delay={baseDelay + 1.5}
+            text="Performance Marketing Agency for Leads, Sales & Brand Growth"
+            delay={baseDelay + 0.2}
             start={startAnim}
           />
         </h1>
 
-        {/* Description */}
-        <p className="mt-6 max-w-2xl text-sm sm:text-base leading-relaxed text-white/85">
+        {/* Subtext */}
+        <p className="mt-6 max-w-3xl text-sm sm:text-base leading-relaxed text-white/80">
           <RevealWords
-            text="At Meta Master, we help you rewire limiting beliefs, strengthen emotional intelligence, and master the inner game of success — so you can lead, communicate, and create with unshakable confidence."
-            delay={baseDelay + 1.7}
+            text="Meta Master is a 360° digital marketing & branding agency helping businesses scale through Meta Ads, high-converting creatives, SEO-optimized websites, and growth-driven strategies."
+            delay={baseDelay + 0.9}
             start={startAnim}
           />
         </p>
@@ -252,213 +427,26 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: baseDelay + 1.8,
-              duration: 0.6,
-            }}
-            className="mt-10 flex flex-wrap items-center justify-center gap-8"
+            transition={{ delay: baseDelay + 1.4, duration: 0.6 }}
+            className="mt-10 flex flex-wrap items-center justify-center gap-6"
           >
-            <button className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-[#2B0046] transition hover:scale-105">
-              Schedule Call <ArrowRight size={16} />
+            <button className="inline-flex items-center gap-2 rounded-full bg-white px-9 py-3 text-sm font-semibold text-[#2B0046] transition hover:scale-105">
+              Get Free Growth Audit <ArrowRight size={16} />
             </button>
 
             <Link href="/our-work">
-              <span className="text-sm font-semibold text-white/80 px-8 py-3 rounded-full border border-white/20 transition-all duration-300 hover:text-[#2B0046] hover:bg-white hover:border-white cursor-pointer">
-                View Case Study
+              <span className="rounded-full border border-white/25 px-9 py-3 text-sm font-medium text-white/80 transition hover:bg-white hover:text-[#2B0046] cursor-pointer">
+                View Case Studies
               </span>
             </Link>
           </motion.div>
         )}
       </motion.div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-white/70">
-        Scroll down <span className="ml-1 animate-bounce">↓</span>
+      {/* Scroll */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-white/60">
+        Scroll <span className="ml-1 animate-bounce">↓</span>
       </div>
     </section>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// "use client";
-
-// import { motion, useScroll, useTransform } from "framer-motion";
-// import { ArrowRight } from "lucide-react";
-// import { useEffect, useRef, useState } from "react";
-// import Link from "next/link";
-
-// /* ---------- WORD REVEAL ---------- */
-// function RevealWords({
-//   text,
-//   delay,
-//   start,
-// }: {
-//   text: string;
-//   delay: number;
-//   start: boolean;
-// }) {
-//   return (
-//     <span className="inline-flex flex-wrap gap-x-2">
-//       {text.split(" ").map((word, i) => (
-//         <motion.span
-//           key={i}
-//           initial={{ y: "120%", opacity: 0 }}
-//           animate={start ? { y: 0, opacity: 1 } : {}}
-//           transition={{
-//             delay: delay + i * 0.06,
-//             duration: 0.6,
-//             ease: [0.22, 1, 0.36, 1],
-//           }}
-//           className="inline-block"
-//         >
-//           {word}
-//         </motion.span>
-//       ))}
-//     </span>
-//   );
-// }
-
-// export default function Hero() {
-//   const ref = useRef<HTMLDivElement>(null);
-//   const [startAnim, setStartAnim] = useState(false);
-//   const [baseDelay, setBaseDelay] = useState(0);
-
-//   useEffect(() => {
-//     const loaderDone = localStorage.getItem("loaderDone") === "true";
-//     const heroPlayed = sessionStorage.getItem("heroPlayed") === "true";
-
-//     if (loaderDone && !heroPlayed) {
-//       setBaseDelay(3.6);
-//       setTimeout(() => {
-//         setStartAnim(true);
-//         sessionStorage.setItem("heroPlayed", "true");
-//       }, 100);
-//     } else {
-//       setBaseDelay(0);
-//       setStartAnim(true);
-//     }
-//   }, []);
-
-//   const { scrollYProgress } = useScroll({
-//     target: ref,
-//     offset: ["start start", "end start"],
-//   });
-
-//   const textY = useTransform(scrollYProgress, [0, 1], [0, -60]);
-//   const fade = useTransform(scrollYProgress, [0, 0.3], [1, 0.7]);
-
-//   return (
-//     <section
-//       ref={ref}
-//       className="relative h-screen w-full overflow-hidden text-white"
-//     >
-//       {/* 🎥 Background Video */}
-//       <video
-//         className="absolute inset-0 h-full w-full object-cover"
-//         src="/hero-bg.mp4"
-//         autoPlay
-//         loop
-//         muted
-//         playsInline
-//       />
-
-//       {/* Overlays */}
-//       <div className="absolute inset-0 bg-black/50" />
-//       <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-[0.08]" />
-
-//       {/* CONTENT */}
-//       <motion.div
-//         style={{ y: textY, opacity: fade }}
-//         className="
-//           relative z-10 mx-auto h-full max-w-7xl
-//           grid grid-cols-1 lg:grid-cols-2
-//           items-center
-//           px-6 sm:px-10
-//         "
-//       >
-//         {/* LEFT CONTENT */}
-//         <div className="pt-36 sm:pt-40 lg:pt-24">
-//           <h1
-//             className="
-//               max-w-[680px]
-//               text-[clamp(2.4rem,5vw,4.6rem)]
-//               font-semibold
-//               leading-[1.12]
-//             "
-//           >
-//             <RevealWords
-//               text="Performance Marketing Agency for Leads, Sales & Brand Growth"
-//               delay={baseDelay}
-//               start={startAnim}
-//             />
-//           </h1>
-
-//           <p className="mt-6 max-w-[620px] text-sm sm:text-base leading-relaxed text-white/80">
-//             <RevealWords
-//               text="Meta Master is a 360° digital marketing & branding agency helping businesses scale through Meta Ads, Creative Production, Websites & SEO."
-//               delay={baseDelay + 0.6}
-//               start={startAnim}
-//             />
-//           </p>
-
-//           {startAnim && (
-//             <motion.div
-//               initial={{ opacity: 0, y: 20 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               transition={{ delay: baseDelay + 1.2, duration: 0.5 }}
-//               className="mt-10 flex flex-wrap items-center gap-6"
-//             >
-//               <button className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-[#2B0046] transition hover:scale-105">
-//                 Get Free Growth Audit <ArrowRight size={16} />
-//               </button>
-
-//               <Link href="/our-work">
-//                 <span className="cursor-pointer rounded-full border border-white/30 px-8 py-3 text-sm font-medium text-white/80 transition hover:bg-white hover:text-[#2B0046]">
-//                   View Case Studies
-//                 </span>
-//               </Link>
-//             </motion.div>
-//           )}
-//         </div>
-
-//         {/* RIGHT ILLUSTRATION */}
-//         <div className="relative hidden lg:block h-full">
-//           <img
-//             src="/herooo.svg"
-//             alt="Marketing Illustration"
-//             className="
-//               absolute bottom-0
-//               right-[-60px] xl:right-[-120px]
-//               w-[520px] xl:w-[650px]
-//               select-none pointer-events-none
-//               drop-shadow-[0_50px_120px_rgba(168,85,247,0.35)]
-//             "
-//           />
-//         </div>
-//       </motion.div>
-
-//       {/* Scroll Hint */}
-//       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-white/70">
-//         Scroll down <span className="ml-1 animate-bounce">↓</span>
-//       </div>
-//     </section>
-//   );
-// }
