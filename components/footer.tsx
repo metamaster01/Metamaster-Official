@@ -209,7 +209,7 @@ export default function Footer() {
           </span>
 
           <Link
-            href="/privacy-policy"
+            href="/privacy"
             className="relative inline-block text-center md:text-right hover:text-white transition
             after:absolute after:left-0 after:-bottom-1 after:h-[1px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
