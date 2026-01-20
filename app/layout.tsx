@@ -44,17 +44,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="-DmtWAEJuWBjoxsIchNljFJ8pKozfKvAVlaTnvBvpJU"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${redHatDisplay.variable} ${inter.variable} antialiased`}
       >
-        {/* {children} */}
- 
         <AppWrapper>
           {children}
           <Analytics />
-          <TabAttention/>
+          <TabAttention />
         </AppWrapper>
-
       </body>
     </html>
   );
