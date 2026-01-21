@@ -285,15 +285,7 @@
 // }
 
 
-
-
-
-
-
-
-
-
-
+//new update hero new content  with word reveal and fixed logic for base delay
 
 
 
@@ -450,3 +442,14 @@ export default function Hero() {
     </section>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
