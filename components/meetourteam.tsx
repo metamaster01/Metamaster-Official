@@ -4,18 +4,18 @@ import Image from "next/image";
 
 const teamMembers = [
   {
-    name: "Aman Kumar",
-    role: "Founder / CEO",
-    image: "/mem1.png",
+    name: "Avinash",
+    role: "SDE",
+    image: "/T1.png",
   },
   {
-    name: "Aman Kumar",
-    role: "Digital Marketing Strategist",
-    image: "/mem2.png",
+    name: "Sujal Pal",
+    role: "SDE-Web",
+    image: "/T2.png",
   },
   {
-    name: "Aman Kumar",
-    role: "UI/UX Designer",
+    name: "Akash Kumar",
+    role: "SDE-Web",
     image: "/mem3.png",
   },
   {
