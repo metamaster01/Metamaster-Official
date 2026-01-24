@@ -402,8 +402,8 @@ const teamMembers = [
   {
     name: "Akash Kumar",
     role: "SDE-Web",
-    experience: "2+ years • Frontend Architecture",
-    image: "/mem3.png",
+    experience: "2+ years • Frontend & Backend ",
+    image: "/akash.png",
     accent: "from-purple-500 to-pink-600",
     tilt: 10,
   },

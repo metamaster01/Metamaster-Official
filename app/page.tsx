@@ -8,13 +8,15 @@ import OurWorksSection from "@/components/ourwork";
 import Image from "next/image";
 import CallToAction from "@/components/calltoaction";
 import AboutUs from "@/components/aboutus";
-// import Ribbon from "@/components/ribbion";
+import Ribbon from "@/components/ribbion";
 import Testimonial from "../components/testimonal";
 import  Blogs from "@/components/blogs";
 import  Newsletter from "@/components/newsletter";
 import Footer from "@/components/footer";
 import Slider from "@/components/slider"
 import EnquiryPopup from "@/components/enquiryform";
+import FreeAuditSection from "@/components/FreeAuditSection";
+
 
 export default function Home() {
   
@@ -26,7 +28,7 @@ export default function Home() {
        <Hero/>
        <Advertisement/>
        <AboutUs/>
-       {/* <Ribbon/> */}
+       <Ribbon/>
        <Services/>
        <WhyChooseUs/>
        <OurWorksSection/>
@@ -34,6 +36,7 @@ export default function Home() {
        <Testimonial/>
         <Blogs/>
         <Newsletter/>
+        <FreeAuditSection/>
        <Footer/>
       </>
   );

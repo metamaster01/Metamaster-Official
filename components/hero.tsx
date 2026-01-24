@@ -298,6 +298,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+ import { MessageCircle } from "lucide-react";
+
 
 /* ---------- WORD REVEAL ---------- */
 function RevealWords({
@@ -334,6 +336,8 @@ export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const [startAnim, setStartAnim] = useState(false);
   const [baseDelay, setBaseDelay] = useState(0);
+  
+  
 
   /* ---------- LOADER AWARE LOGIC ---------- */
   useEffect(() => {
@@ -361,9 +365,10 @@ export default function Hero() {
   const fade = useTransform(scrollYProgress, [0, 0.3], [1, 0.65]);
 
   return (
+     
     <section
       ref={ref}
-      className="relative h-screen w-full overflow-hidden text-white"
+      className="relative h-screen w-full overflow-hidden text-white "
     >
       {/* 🎥 Background Video */}
       <video
@@ -384,14 +389,14 @@ export default function Hero() {
       {/* CONTENT */}
       <motion.div
         style={{ y: textY, opacity: fade }}
-        className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
+        className="relative z-10 flex h-full flex-col items-center justify-center  text-center"
       >
         {/* Eyebrow */}
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           animate={startAnim ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: baseDelay, duration: 0.6 }}
-          className="mb-5 inline-block rounded-full border border-white/20 px-4 py-1 text-xs tracking-wide text-white/80"
+          className="mb-5 mt-7 inline-block rounded-full border border-white/20 px-4 py-1 text-xs tracking-wide text-white/80"
         >
           Performance Marketing & Growth Agency
         </motion.span>
@@ -422,15 +427,28 @@ export default function Hero() {
             transition={{ delay: baseDelay + 1.4, duration: 0.6 }}
             className="mt-10 flex flex-wrap items-center justify-center gap-6"
           >
-            <button className="inline-flex items-center gap-2 rounded-full bg-white px-9 py-3 text-sm font-semibold text-[#2B0046] transition hover:scale-105">
-              Get Free Growth Audit <ArrowRight size={16} />
-            </button>
+           <button
+  onClick={() => {
+    document
+      .getElementById("free-audit")
+      ?.scrollIntoView({ behavior: "smooth" });
+  }}
+  className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-[#2B0046] transition hover:scale-105"
+>
+  Get Free Ads Audit
+</button>
 
-            <Link href="/our-work">
-              <span className="rounded-full border border-white/25 px-9 py-3 text-sm font-medium text-white/80 transition hover:bg-white hover:text-[#2B0046] cursor-pointer">
-                View Case Studies
-              </span>
-            </Link>
+           
+
+<a
+  href="https://wa.me/9529770498?text=Hi%20Meta%20Master%2C%20I%20want%20to%20grow%20my%20business."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-2 rounded-full border border-white/25 px-9 py-3 text-sm font-medium text-white/80 transition hover:bg-white hover:text-[#2B0046]"
+>
+  <MessageCircle size={18} />
+  WhatsApp Now
+</a>
           </motion.div>
         )}
       </motion.div>
@@ -440,6 +458,7 @@ export default function Hero() {
         Scroll <span className="ml-1 animate-bounce">↓</span>
       </div>
     </section>
+    
   );
 }
 

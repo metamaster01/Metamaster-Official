@@ -6,21 +6,36 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const testimonials = [
-  {
-    text: "Meta Master took our social media to the next level. Leads started flowing from day 10! Highly recommend.",
-    name: "Client",
-    role: "CEO & Founder at XYZ Company",
-  },
-  {
-    text: "Meta Master took our social media to the next level. Leads started flowing from day 10! Highly recommend.",
-    name: "Client",
-    role: "CEO & Founder at XYZ Company",
-  },
-  {
-    text: "Meta Master took our social media to the next level. Leads started flowing from day 10! Highly recommend.",
-    name: "Client",
-    role: "CEO & Founder at XYZ Company",
-  },
+{
+text: "Meta Master completely transformed our online presence. From website design to performance marketing, everything felt premium and well thought out. Our conversion rate improved significantly within the first month itself.",
+
+role: "Founder, Zaina Collection",
+},
+{
+text: "Working with Meta Master was a game changer for us. Their branding, creatives, and digital campaigns helped us reach a wider audience and generate consistent event inquiries.",
+
+role: "Founder, Xplore Events",
+},
+{
+text: "Meta Master understood our brand vision perfectly. The website, social media strategy, and content helped us build trust with our audience and grow organically.",
+
+role: "Founder, Chakra Crystals",
+},
+{
+text: "We saw real results after partnering with Meta Master. Their SEO and lead generation strategy brought us high-quality leads consistently.",
+
+role: "Business Owner",
+},
+{
+text: "The team at Meta Master feels more like a growth partner than an agency. Their strategic thinking and execution helped us scale faster than expected.",
+
+role: "Co-founder, SaaS Startup",
+},
+{
+text: "Meta Master delivers more than just services — they deliver impact. From branding to performance marketing, their approach is creative, data-driven, and result-focused.",
+
+role: "Marketing Head, FMCG Brand",
+},
 ];
 
 export default function Testimonial() {

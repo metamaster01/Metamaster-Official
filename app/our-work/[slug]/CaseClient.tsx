@@ -366,27 +366,27 @@
 //           />
 //         </motion.div>
 
-//         {/* TESTIMONIAL TEXT */}
-//         <motion.div
-//           initial={{ opacity: 0, x: 30 }}
-//           whileInView={{ opacity: 1, x: 0 }}
-//           viewport={{ once: true }}
-//           transition={{ duration: 0.7, delay: 0.1 }}
-//           className="space-y-6"
-//         >
-//           <p className="text-sm sm:text-base leading-relaxed text-white/95">
-//             “{data.testimonial_text}”
-//           </p>
+        // {/* TESTIMONIAL TEXT */}
+        // <motion.div
+        //   initial={{ opacity: 0, x: 30 }}
+        //   whileInView={{ opacity: 1, x: 0 }}
+        //   viewport={{ once: true }}
+        //   transition={{ duration: 0.7, delay: 0.1 }}
+        //   className="space-y-6"
+        // >
+        //   <p className="text-sm sm:text-base leading-relaxed text-white/95">
+        //     “{data.testimonial_text}”
+        //   </p>
 
-//           <div>
-//             <p className="font-semibold tracking-wide">
-//               {data.testimonial_author}
-//             </p>
-//             <p className="text-xs text-white/70">
-//               {data.testimonial_role}
-//             </p>
-//           </div>
-//         </motion.div>
+        //   <div>
+        //     <p className="font-semibold tracking-wide">
+        //       {data.testimonial_author}
+        //     </p>
+        //     <p className="text-xs text-white/70">
+        //       {data.testimonial_role}
+        //     </p>
+        //   </div>
+        // </motion.div>
 
 //       </div>
 //     </motion.div>
@@ -459,6 +459,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import KeyOutcomes from "@/components/KeyOutcomesSection";
 
 export default function CaseClient({ data }: { data: any }) {
   if (!data) return null;
@@ -584,7 +585,73 @@ export default function CaseClient({ data }: { data: any }) {
             ))}
           </div>
         </motion.div>
+
+        
       </section>
+
+
+      {/* ================= KEY OUTCOMES ================= */}
+{data.key_outcomes && (
+  <section className="relative max-w-7xl mx-auto px-6 pb-36">
+    
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="mb-14 text-center"
+    >
+      <h2 className="text-3xl sm:text-4xl font-semibold">
+        Key Outcomes
+      </h2>
+      <p className="mt-3 text-sm text-white/60">
+        Measurable results achieved through strategy, creativity, and performance.
+      </p>
+      <div className="mx-auto mt-4 h-[2px] w-16 bg-purple-500" />
+    </motion.div>
+
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      
+      {[
+        { label: "Traffic Growth", value: data.key_outcomes.traffic },
+        { label: "Leads Generated", value: data.key_outcomes.leads },
+        { label: "Conversion Rate", value: data.key_outcomes.conversion },
+        { label: "Ad Spend ROI", value: data.key_outcomes.roi },
+      ].map((item, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 40, scale: 0.9 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: i * 0.1 }}
+          whileHover={{ y: -8 }}
+          className="
+            group relative
+            rounded-2xl
+            bg-white/[0.04]
+            border border-white/10
+            p-8
+            text-center
+            backdrop-blur-md
+            shadow-[0_20px_60px_-20px_rgba(168,85,247,0.25)]
+          "
+        >
+          {/* Glow */}
+          <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500">
+            <div className="absolute inset-0 rounded-2xl bg-[radial-gradient(400px_circle_at_50%_0%,rgba(168,85,247,0.25),transparent_60%)]" />
+          </div>
+
+          <p className="text-3xl sm:text-4xl font-bold text-purple-400">
+            {item.value}
+          </p>
+          <p className="mt-2 text-sm text-white/70">
+            {item.label}
+          </p>
+        </motion.div>
+      ))}
+    </div>
+  </section>
+)}
 
       {/* ================= CHALLENGE ================= */}
       <TwoColumnSection
@@ -593,12 +660,19 @@ export default function CaseClient({ data }: { data: any }) {
         items={data.challenge}
       />
 
+
+      <KeyOutcomes data={data} />
+
       {/* ================= RESULTS ================= */}
       <TwoColumnSection
         title="The Results"
         description={data.results_intro}
         items={data.results}
       />
+
+
+
+      
     </main>
   );
 }

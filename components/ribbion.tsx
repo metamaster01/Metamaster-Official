@@ -2,14 +2,14 @@
 
 export default function Ribbon() {
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-r from-[#12001f] via-[#0e001a] to-[#12001f] py-24">
+    <section className="relative w-full overflow-hidden bg-gradient-to-r from-[#12001f] via-[#0e001a] to-[#12001f] py-4 sm:py-6">
       
       {/* Ribbon Wrapper */}
       <div
         className="
           relative
           w-[140%]
-          -rotate-3
+         
           bg-[#D26AFF]
           py-6 sm:py-7
           shadow-xl

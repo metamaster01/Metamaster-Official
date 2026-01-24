@@ -60,7 +60,7 @@ export default function CallToAction() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden px-4 py-6 md:py-44"
+      className="relative w-full overflow-hidden px-4 py-2 md:py-16"
     >
       {/* ===== BACKGROUND GRADIENT ===== */}
       <motion.div

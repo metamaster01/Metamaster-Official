@@ -96,6 +96,8 @@ import Footer from "@/components/footer";
 import ProjectCard from "@/components/ProjectCard";
 import CallToAction from "@/components/calltoaction";
 import Newsletter from "@/components/newsletter";
+import Testimonial from "@/components/testimonal";
+import Advertise from "@/components/advertisement";
 
 const projects = [
   {
@@ -198,9 +200,12 @@ export default function OurWorksPage() {
           ))}
         </section>
       </main>
-
+       
+       <Advertise/>
       <CallToAction />
+      <Testimonial/>
       <Newsletter />
+      
       <Footer />
     </>
   );
