@@ -36,10 +36,9 @@ export default function FreeAuditSection() {
       id="free-audit"
       className="relative w-full overflow-hidden bg-gradient-to-r from-[#12001f] via-[#0e001a] to-[#12001f] py-36 text-white"
     >
-      {/* Animated grid lines */}
+      
       <div className="pointer-events-none absolute inset-0 opacity-[0.15] bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:80px_80px]" />
 
-      {/* Floating glow */}
       <motion.div
         className="pointer-events-none absolute -top-40 -left-40 h-[420px] w-[420px] rounded-full bg-purple-600/25 blur-[160px]"
         animate={{ y: [0, 40, 0] }}
@@ -54,7 +53,7 @@ export default function FreeAuditSection() {
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <div className="grid gap-20 lg:grid-cols-2 items-center">
 
-          {/* LEFT CONTENT (unchanged) */}
+          {/* LEFT CONTENT unchanged */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
