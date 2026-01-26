@@ -150,7 +150,7 @@ export default function Testimonial() {
 
                 {/* Client */}
                 <div className="mt-8 text-sm">
-                  <p className="font-medium">{item.name}</p>
+                  {/* <p className="font-medium">{item.name}</p> */}
                   <p className="text-white/80">{item.role}</p>
                 </div>
               </motion.div>

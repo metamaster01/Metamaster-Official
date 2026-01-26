@@ -490,7 +490,7 @@ export default function MeetOurTeam() {
 
 /* ===================== CARD ===================== */
 
-function PremiumCard({ member }) {
+function PremiumCard({ member } : { member: any }) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -506,7 +506,7 @@ function PremiumCard({ member }) {
       `radial-gradient(600px at ${mx}px ${my}px, rgba(139,92,246,0.22), transparent 65%)`
   );
 
-  const onMove = (e) => {
+  const onMove = (e : any) => {
     const r = e.currentTarget.getBoundingClientRect();
     const px = e.clientX - r.left;
     const py = e.clientY - r.top;
