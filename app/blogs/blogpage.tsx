@@ -6,7 +6,9 @@ import { ChevronRight } from 'lucide-react'
 
 export default function BlogsPage() {
   const [scrollGlow, setScrollGlow] = useState(0)
-  const sectionsRef = useRef<HTMLDivElement[]>([])
+
+  // ✅ FIXED TYPE (ONLY CHANGE)
+  const sectionsRef = useRef<HTMLElement[]>([])
 
   /* ================= SCROLL + MOUSE EFFECTS ================= */
   useEffect(() => {
@@ -41,7 +43,7 @@ export default function BlogsPage() {
       { threshold: 0.15 }
     )
 
-    sectionsRef.current.forEach((el) => el && observer.observe(el))
+    sectionsRef.current.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
   }, [])
 
@@ -58,8 +60,7 @@ export default function BlogsPage() {
   const blogs = Array.from({ length: 6 }, (_, i) => ({
     id: i + 1,
     title: 'High-Impact Branding Strategy',
-    description:
-      'Design and messaging choices that actually convert users.',
+    description: 'Design and messaging choices that actually convert users.',
     image: i % 2 === 0 ? '/blog1.png' : '/blog2.png',
     tag: i % 2 === 0 ? 'Branding' : 'Marketing',
     meta: '5 min · Jan 2026',
@@ -89,18 +90,19 @@ export default function BlogsPage() {
 
       {/* ================= HERO ================= */}
       <section
-        ref={(el) => el && sectionsRef.current.push(el)}
+        ref={(el) => {
+          if (el) sectionsRef.current.push(el)
+        }}
         className="relative px-6 pt-20 pb-20 text-center md:px-12 lg:px-20 opacity-0 translate-y-8 transition-all duration-700"
       >
         <p className="mb-6 inline-block rounded-full bg-purple-900/30 px-4 py-2 text-sm font-medium text-purple-300">
           Blogs
         </p>
 
-       <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
-  Insights, Tips & Trends from Meta
-  <span className="block">Master</span>
-</h1>
-
+        <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
+          Insights, Tips & Trends from Meta
+          <span className="block">Master</span>
+        </h1>
 
         <p className="mx-auto max-w-2xl text-lg text-purple-200/70">
           Stay updated with the latest in marketing, design, and digital growth
@@ -109,11 +111,12 @@ export default function BlogsPage() {
 
       {/* ================= FEATURED BLOG ================= */}
       <section
-        ref={(el) => el && sectionsRef.current.push(el)}
+        ref={(el) => {
+          if (el) sectionsRef.current.push(el)
+        }}
         className="relative px-6 pb-16 md:px-12 lg:px-20 opacity-0 translate-y-8 transition-all duration-700"
       >
         <div className="grid items-center gap-14 md:grid-cols-2">
-          {/* IMAGE */}
           <div className="relative overflow-hidden rounded-2xl border border-purple-900/40">
             <span className="absolute left-4 top-4 z-10 rounded-full bg-purple-700/80 px-3 py-1 text-xs font-semibold">
               FEATURED
@@ -124,13 +127,12 @@ export default function BlogsPage() {
                 src={featuredBlog.image}
                 alt={featuredBlog.title}
                 fill
-                className="object-contain transition-transform duration-500 hover:scale-[1.04]"
                 priority
+                className="object-contain transition-transform duration-500 hover:scale-[1.04]"
               />
             </div>
           </div>
 
-          {/* CONTENT */}
           <div>
             <h2 className="mb-4 text-3xl font-bold">
               {featuredBlog.title}
@@ -151,17 +153,14 @@ export default function BlogsPage() {
         </div>
       </section>
 
-      {/* ================= DIVIDER ================= */}
-      <div className="my-24 h-px w-full bg-gradient-to-r from-transparent via-purple-900/40 to-transparent" />
-
       {/* ================= LATEST BLOGS ================= */}
       <section
-        ref={(el) => el && sectionsRef.current.push(el)}
+        ref={(el) => {
+          if (el) sectionsRef.current.push(el)
+        }}
         className="relative px-6 pb-28 md:px-12 lg:px-20 opacity-0 translate-y-8 transition-all duration-700"
       >
-        <h2 className="mb-12 text-3xl font-bold">
-          Latest Blogs
-        </h2>
+        <h2 className="mb-12 text-3xl font-bold">Latest Blogs</h2>
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
           {blogs.map((blog) => (
@@ -169,10 +168,6 @@ export default function BlogsPage() {
               key={blog.id}
               className="group relative overflow-hidden rounded-2xl border border-purple-900/30 bg-[#07000f] transition-all duration-300 hover:-translate-y-1"
             >
-              {/* Animated gradient border */}
-              <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-[linear-gradient(120deg,transparent,rgba(160,90,255,0.4),transparent)]" />
-
-              {/* IMAGE */}
               <div className="relative aspect-[16/9] bg-black">
                 <Image
                   src={blog.image}
@@ -182,7 +177,6 @@ export default function BlogsPage() {
                 />
               </div>
 
-              {/* CONTENT */}
               <div className="px-6 py-7">
                 <span className="mb-3 inline-block rounded-full bg-purple-900/40 px-3 py-1 text-xs text-purple-300">
                   {blog.tag}
