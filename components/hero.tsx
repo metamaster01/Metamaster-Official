@@ -398,13 +398,13 @@ export default function Hero() {
           transition={{ delay: baseDelay, duration: 0.6 }}
           className="mb-5 mt-7 inline-block rounded-full border border-white/20 px-4 py-1 text-xs tracking-wide text-white/80"
         >
-          Performance Marketing & Growth Agency
+           Digital Growth Partner for Startups
         </motion.span>
 
         {/* H1 */}
-        <h1 className="max-w-5xl text-[clamp(2.8rem,6vw,5.2rem)] font-semibold leading-[1.05] tracking-tight">
+        <h1 className="max-w-6xl text-[clamp(2.8rem,6vw,5.2rem)] font-xl leading-[1.05] tracking-tight">
           <RevealWords
-            text="Performance Marketing Agency for Leads, Sales & Brand Growth"
+            text="Building Scalable Digital Brands for the Next Generation of Businesses"
             delay={baseDelay + 0.2}
             start={startAnim}
           />
@@ -413,7 +413,7 @@ export default function Hero() {
         {/* Subtext */}
         <p className="mt-6 max-w-3xl text-sm sm:text-base leading-relaxed text-white/80">
           <RevealWords
-            text="Meta Master is a 360° digital marketing & branding agency helping businesses scale through Meta Ads, high-converting creatives, SEO-optimized websites, and growth-driven strategies."
+            text="  We help startups and growth-stage companies establish a strong digital presence through strategic branding, high-performance websites, SEO-driven visibility, and result-oriented social media marketing."
             delay={baseDelay + 0.9}
             start={startAnim}
           />
@@ -433,7 +433,7 @@ export default function Hero() {
       .getElementById("free-audit")
       ?.scrollIntoView({ behavior: "smooth" });
   }}
-  className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3 text-sm font-semibold text-[#2B0046] transition hover:scale-105"
+  className="inline-flex items-center gap-2 rounded-full bg-purple-500 px-8 py-3 text-sm font-semibold text-[#2B0046] transition hover:scale-105 hover:bg-white" 
 >
   Get Free Ads Audit
 </button>
@@ -444,7 +444,7 @@ export default function Hero() {
   href="https://wa.me/9529770498?text=Hi%20Meta%20Master%2C%20I%20want%20to%20grow%20my%20business."
   target="_blank"
   rel="noopener noreferrer"
-  className="inline-flex items-center gap-2 rounded-full border border-white/25 px-9 py-3 text-sm font-medium text-white/80 transition hover:bg-white hover:text-[#2B0046]"
+  className="inline-flex items-center bg-green-500 gap-2 rounded-full border border-white/25 px-9 py-3 text-sm font-medium text-white transition hover:bg-white hover:text-[#2B0046]"
 >
   <MessageCircle size={18} />
   WhatsApp Now
