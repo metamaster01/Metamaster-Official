@@ -598,7 +598,7 @@ const navLinks = [
   { name: "About us", href: "/about-us" },
   { name: "Services", href: "/services", dropdown: true },
   { name: "Our works", href: "/our-work" },
-  { name: "Blogs", href: "/" },
+  { name: "Blogs", href: "/blogs" },
   { name: "Careers", href: "/careers" },
 ];
 
