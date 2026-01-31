@@ -4,25 +4,26 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import Image from "next/image";
+import { supabase } from "@/lib/supabase";
 
 export default function EnquiryPopup() {
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-   
     const resetOnRefresh = () => {
       sessionStorage.removeItem("enquiryPopupShown");
     };
 
     window.addEventListener("beforeunload", resetOnRefresh);
 
-    
     if (sessionStorage.getItem("enquiryPopupShown")) return;
 
     const timer = setTimeout(() => {
       setOpen(true);
       sessionStorage.setItem("enquiryPopupShown", "true");
-    }, 9600); // loader ke baad
+    }, 9600);
 
     return () => {
       clearTimeout(timer);
@@ -30,22 +31,34 @@ export default function EnquiryPopup() {
     };
   }, []);
 
-  
   const handleClose = () => {
     setOpen(false);
     sessionStorage.setItem("enquiryPopupShown", "true");
   };
 
- 
-  const handleSubmit = (e: React.FormEvent) => {
+  async function handleSubmit(e: any) {
     e.preventDefault();
+    setLoading(true);
 
-    console.log("Enquiry submitted");
-    
+    const form = e.target;
 
-    setOpen(false);
-    sessionStorage.setItem("enquiryPopupShown", "true");
-  };
+    const { error } = await supabase.from("enquiries").insert({
+      name: form.name.value,
+      email: form.email.value,
+      subject: form.subject.value,
+      message: form.message.value,
+    });
+
+    setLoading(false);
+
+    if (!error) {
+      setSuccess(true);
+      form.reset();
+      setTimeout(() => setOpen(false), 2000);
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  }
 
   return (
     <AnimatePresence>
@@ -63,7 +76,6 @@ export default function EnquiryPopup() {
             transition={{ duration: 0.45, ease: "easeOut" }}
             className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-gradient-to-br from-[#12001f] via-[#0e001a] to-[#12001f] shadow-2xl"
           >
-            {/*  CLOSE */}
             <button
               onClick={handleClose}
               className="absolute right-5 top-5 z-20 text-white/60 hover:text-white"
@@ -82,39 +94,56 @@ export default function EnquiryPopup() {
                   Tell us about your project and we’ll get back shortly.
                 </p>
 
-                <form onSubmit={handleSubmit} className="mt-8 space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input
-                      required
-                      placeholder="Full Name"
-                      className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-white/40 focus:ring-2 focus:ring-purple-500"
-                    />
-                    <input
-                      required
-                      type="email"
-                      placeholder="Email Address"
-                      className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-white/40 focus:ring-2 focus:ring-purple-500"
-                    />
+                {success ? (
+                  <div className="mt-10 rounded-xl border border-green-400/30 bg-green-400/10 p-6 text-center backdrop-blur shadow-[0_0_30px_rgba(34,197,94,0.3)]">
+                    <p className="text-3xl">🎉</p>
+                    <h4 className="mt-2 text-lg font-semibold text-green-300">
+                      Enquiry Sent Successfully!
+                    </h4>
+                    <p className="mt-1 text-sm text-green-200/80">
+                      Our team will contact you shortly.
+                    </p>
                   </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <input
+                        name="name"
+                        required
+                        placeholder="Full Name"
+                        className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-white/40 focus:ring-2 focus:ring-purple-500"
+                      />
+                      <input
+                        name="email"
+                        required
+                        type="email"
+                        placeholder="Email Address"
+                        className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-white/40 focus:ring-2 focus:ring-purple-500"
+                      />
+                    </div>
 
-                  <input
-                    placeholder="Subject"
-                    className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-white/40 focus:ring-2 focus:ring-purple-500"
-                  />
+                    <input
+                      name="subject"
+                      placeholder="Subject"
+                      className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-white/40 focus:ring-2 focus:ring-purple-500"
+                    />
 
-                  <textarea
-                    rows={4}
-                    placeholder="Message"
-                    className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-white/40 focus:ring-2 focus:ring-purple-500"
-                  />
+                    <textarea
+                      name="message"
+                      rows={4}
+                      placeholder="Message"
+                      className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-white/40 focus:ring-2 focus:ring-purple-500"
+                    />
 
-                  <button
-                    type="submit"
-                    className="w-full rounded-md bg-purple-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-purple-700"
-                  >
-                    Send Message
-                  </button>
-                </form>
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full rounded-md bg-purple-600 px-8 py-3 text-sm font-semibold text-white transition hover:bg-purple-700"
+                    >
+                      {loading ? "Sending..." : "Send Message"}
+                    </button>
+                  </form>
+                )}
               </div>
 
               {/* IMAGE */}
@@ -125,7 +154,6 @@ export default function EnquiryPopup() {
                   fill
                   className="object-cover object-contain"
                 />
-                <div className="absolute inset-0 " />
               </div>
             </div>
           </motion.div>

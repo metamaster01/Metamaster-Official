@@ -111,8 +111,10 @@ export default function FreeAuditSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="relative rounded-3xl bg-white/[0.06] backdrop-blur-xl border border-white/10 p-10 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.8)]"
-          >
+            className="relative rounded-3xl bg-white/[0.06] backdrop-blur-xl border border-white/10 p-10 
+shadow-[0_40px_120px_-40px_rgba(0,0,0,0.8)] 
+hover:shadow-[0_0_80px_rgba(168,85,247,0.35)] transition"
+>
             <h3 className="text-2xl font-semibold">
               Get Your Free Audit
             </h3>
@@ -120,11 +122,23 @@ export default function FreeAuditSection() {
               Takes less than 30 seconds.
             </p>
 
-            {success ? (
-              <p className="mt-8 text-green-400 font-semibold">
-                ✅ Thanks! Our team will contact you shortly.
-              </p>
-            ) : (
+           {success ? (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.4 }}
+    className="mt-8 rounded-2xl border border-green-400/30 bg-green-400/10 p-6 text-center backdrop-blur shadow-[0_0_40px_rgba(34,197,94,0.25)]"
+  >
+    <p className="text-3xl">🎉</p>
+    <h4 className="mt-2 text-lg font-semibold text-green-300">
+      Request Received!
+    </h4>
+    <p className="mt-1 text-sm text-green-200/80">
+      Our team will contact you shortly.
+    </p>
+  </motion.div>
+) : (
+
               <form onSubmit={handleSubmit} className="mt-8 space-y-5">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <input name="name" required placeholder="Your Name" className="input" />
