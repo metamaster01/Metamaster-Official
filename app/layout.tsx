@@ -31,8 +31,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MetaMaster - Your Vision, Our Expertise",
-  description: "Meta Master is a 360° digital solutions hub built to help businesses grow, transform, and thrive in the digital-first era.",
+  title: "Digital Marketing Agency for Startups in India | Meta Master",
+  description: "MMeta Master is a 360° digital marketing agency helping startups across India build online presence, generate leads, and grow with budget-friendly strategies.",
   keywords: ["Meta Master", "Digital Solutions", "Business Growth", "Digital Transformation", "Creative Agency", "Tech Solutions", "Marketing Strategies"],
   
 };

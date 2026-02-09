@@ -279,45 +279,45 @@ export const services: ServiceItem[] = [
     id: 1,
     slug: "paid-ads-lead-generation",
     badge: "Services",
-    title: "Paid Ads & Lead Generation",
+    title: "Meta Ads & Lead Generation Services in India",
     description:
-      "We design and manage paid ad campaigns that deliver results — not just impressions. From Meta to Google, we help you attract the right audience and turn engagement into revenue.",
+      "We help startups run high-performing Facebook and Instagram ad campaigns focused on lead quality, conversions, and ROI. From strategy to execution, we manage everything to ensure your ad spend drives real business growth.",
     image: "/service-1.png",
     ribbonText: "We Create. We Connect. We Convert.",  // Customize per service
     features: [
       {
-        title: "Campaign Setup",
+        title: "Campaign Setup & Strategy",
         description: "Ad account configuration, pixel setup, and conversion tracking."
       },
       {
-        title: "Ad Design & Copywriting",
+        title: "Ad Creatives & videos",
         description: "Visuals and messaging optimized for clicks and conversions."
       },
       {
-        title: "Multi-Platform Ads",
-        description: "Facebook, Instagram, Google, and LinkedIn campaigns."
+        title: "performance Optimization",
+        description: "Ongoing monitoring and adjustments to maximize results."
       },
       {
-        title: "Funnel Integration",
-        description: "Custom landing pages and automation workflows."
+        title: "Audience Targeting & Retargeting",
+        description: "Advanced targeting strategies to reach your ideal customers and re-engage website visitors."
       },
       {
-        title: "Weekly Reports",
-        description: "Clear metrics on ad spend, reach, and lead performance."
+        title: "Whatsapp Lead Generation",
+        description: "Targeted campaigns to drive high-quality leads directly to your WhatsApp for instant engagement."
       }
     ],
     seo: {
-      title: "Paid Ads & Lead Generation Services",
-      description: "High-converting paid advertising and lead generation services across Meta, Google & LinkedIn."
+      title: "Meta Ads Agency in India | Facebook & Instagram Ads – Meta Master",
+      description: "Meta Master is a Meta Ads agency in India helping startups generate leads and sales through Facebook and Instagram advertising."
     }
   },
   {
     id: 2,
     slug: "social-media-marketing",
     badge: "Services",
-    title: "Social Media Marketing",
+    title: "Social Media Marketing Services for Startups",
     description:
-      "Crafting impact-driven social media strategies that amplify your brand's voice, engage your audience, and drive measurable growth.",
+      "We help startups grow on Instagram and Facebook through content strategy, creatives, reels, and engagement-focused marketing.",
     image: "/service-2.png",
     ribbonText: "One Agency. Every Solution. Maximum Impact.",  // Customize per service
     features: [
@@ -336,47 +336,51 @@ export const services: ServiceItem[] = [
       {
         title: "Engagement Management",
         description: "Authentic audience interaction and response handling."
-      }
+      },
+      {
+        title: "Profile Optimization",
+        description: "We help startups grow on Instagram and Facebook through content strategy, creatives, reels, and engagement-focused marketing."}
+
     ],
     seo: {
-      title: "Social Media Marketing Services",
-      description: "Content-driven social media marketing with growth-focused ad campaigns."
+      title: "Social Media Marketing Agency for Startups | Meta Master",
+      description: "Meta Master provides social media marketing services for startups to build brand presence, engagement, and growth on Instagram and Facebook."
     }
   },
   {
     id: 3,
     slug: "website-seo-funnel-building",
     badge: "Services",
-    title: "Website, SEO & Funnel Building",
+    title: "Website Development & SEO Services for Startups",
     description:
-      "We craft websites and funnels that don't just look great — they perform. From design to SEO and automation, everything is built to convert.",
+      "We design mobile-friendly, fast, and SEO-optimized websites that help startups establish trust and rank on Google.",
     image: "/service-3.png",
     ribbonText: "We Create. We Connect. We Convert.",
     features: [
       {
         title: "Website Design & Development",
-        description: "Responsive, high-performance websites tailored to your brand."
+        description: "Responsive, high-performance websites tailored to your brand that establish credibility and trust with your audience, helping you make a strong first impression online."
       },
       {
-        title: "SEO Setup & Optimization",
-        description: "On-page, off-page, and technical SEO."
+        title: "SEO structure & Content",
+        description: "On-page, off-page, and technical SEO to help your website rank higher on search engines and attract organic traffic."
       },
       {
-        title: "Funnel Building",
-        description: "High-converting landing pages and automated journeys."
+        title: "Business Websites",
+        description: "We build professional business websites that establish credibility and trust with your audience, helping you make a strong first impression online."
       },
       {
         title: "Technical Setup",
-        description: "Domain, hosting, analytics, and performance configuration."
+        description: "Domain, hosting, analytics, and performance configuration to ensure your website runs smoothly and efficiently."
       },
       {
-        title: "Performance Reporting",
-        description: "Monthly insights with growth metrics."
+        title: "Landing Page",
+        description: "We create high-converting landing pages that drive specific actions, whether it's lead generation, product sales, or event registrations."
       }
     ],
     seo: {
-      title: "Website, SEO & Funnel Services",
-      description: "Conversion-focused websites, SEO optimization, and funnel systems."
+      title: "Website Development & SEO Services in India | Meta Master",
+      description: "Meta Master offers SEO-friendly website development services in India for startups to build fast, mobile-ready, and ranking websites."
     }
   },
   {
@@ -419,9 +423,9 @@ export const services: ServiceItem[] = [
     id: 5,
     slug: "branding-design",
     badge: "Services",
-    title: "Branding & Design",
+    title: "Branding & Creative Services for Startups",
     description:
-      "We craft brand identities that connect emotionally and stand visually. From logo to language, every element we design tells your story with clarity and confidence.",
+      "We help startups look professional, consistent, and trustworthy with branding and creative solutions.",
     image: "/service-5.png",
     ribbonText: "Design That Defines. Branding That Speaks.",
     features: [
@@ -430,16 +434,16 @@ export const services: ServiceItem[] = [
         description: "Understanding your story, audience, and positioning."
       },
       {
-        title: "Logo & Visual Identity Kit",
-        description: "Logo, color system, typography, and brand icons."
+        title: "Logo & Brand Identity",
+        description: "Custom logo design, color palette, typography, and brand guidelines."
       },
       {
-        title: "Brand Guidelines",
-        description: "A complete guide to using your brand assets consistently."
+        title: "Videos & Reel Production",
+        description: "Professional video content creation for social media and marketing campaigns."
       },
       {
-        title: "Collateral Design",
-        description: "Social templates, stationery, or marketing visuals (as per package)."
+        title: "Social Media Creatives",
+        description: "Eye-catching designs for posts, carousels, and ads that maintain brand consistency."
       },
       {
         title: "Optional Add-ons",
@@ -447,8 +451,8 @@ export const services: ServiceItem[] = [
       }
     ],
     seo: {
-      title: "Branding & Design Services",
-      description: "Complete brand identity design services that connect emotionally and stand out visually."
+      title: "Branding Agency for Startups in India | Meta Master",
+      description: "Meta Master is a branding agency helping startups create logos, creatives, and brand identity that stands out in the market."
     }
   },
   {

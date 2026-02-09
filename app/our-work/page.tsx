@@ -120,6 +120,12 @@ const projects = [
   },
 ];
 
+export const metadata = {
+  title: "Our Work | Meta Master - Digital Marketing Agency for Startups in India",
+  description: "Explore our portfolio of successful projects at Meta Master, a leading digital marketing agency in India. See how we help startups grow online with innovative strategies.",
+  keywords: ["Meta Master Portfolio", "Our Work", "Digital Marketing Projects", "Startup Success Stories", "Branding Case Studies", "Online Growth Examples", "India Digital Marketing"],
+};
+
 export default function OurWorksPage() {
   const rows = [];
   for (let i = 0; i < projects.length; i += 3) {

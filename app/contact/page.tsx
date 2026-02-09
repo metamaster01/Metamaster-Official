@@ -8,8 +8,8 @@ import Newsletter from "@/components/newsletter";
 
 // SEO Metadata
 export const metadata: Metadata = {
-  title: "Contact Us - Get Expert Digital Marketing Services | MetaMaster",
-  description: "Contact MetaMaster for top-tier digital marketing services including Social Media Marketing, SEO, Paid Ads, Branding, and Content Production. Get a free consultation today!",
+  title: "Contact Meta Master | Digital Marketing Agency in India",
+  description: "Contact Meta Master to start your digital marketing journey. We help startups across India grow online with affordable solutions.",
   keywords: [
     "contact digital marketing agency",
     "digital marketing consultation",

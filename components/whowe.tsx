@@ -277,7 +277,7 @@ export default function WhoWe() {
 
             <SplitChars
               className="text-gray-300 max-w-xl text-lg"
-              text="Intelligent marketing, compelling storytelling, and integrated technology solutions built for sustainable growth."
+              text="To empower Indian startups with affordable, effective, and scalable digital marketing solutions. We strive to be a catalyst for growth, helping emerging brands build strong online presences and achieve their business goals."
             />
           </div>
 
@@ -297,7 +297,7 @@ export default function WhoWe() {
 
             <SplitChars
               className="text-gray-300 max-w-xl text-lg"
-              text="To become India’s most trusted performance-driven branding powerhouse, dominating digital and emerging platforms."
+              text="Our vision is to make digital marketing simple, affordable, and accessible for every startup in India, regardless of budget size. We aim to be the go-to partner for emerging brands seeking to leverage digital channels for growth and success."
             />
           </div>
         </div>

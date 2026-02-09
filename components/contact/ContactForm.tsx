@@ -102,14 +102,15 @@ export default function ContactForm() {
         <div className="text-center mb-16 animate-fade-in-down">
           <div className="inline-block mb-4">
             <span className="text-purple-400 text-sm font-medium px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20">
-              Contact us
+              Contact Meta Master
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-purple-400">
-            Let's Build Something Impactful Together
+            Ready to take your startup online?
+
           </h1>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            Have a project in mind or need expert guidance? We'd love to hear from you. Share your requirements and our team will get back to you shortly.
+            Get in touch with Meta Master and start your digital growth journey today. 
           </p>
         </div>
 

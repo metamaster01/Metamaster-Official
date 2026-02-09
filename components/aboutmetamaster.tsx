@@ -20,29 +20,28 @@ export default function AboutMetaMaster() {
             {/* LEFT SIDE - TEXT CONTENT - 65% width */}
             <div className="w-[65%] pr-12 xl:pr-20 z-20">
               <motion.h1 
-                className="text-white text-7xl xl:text-8xl 2xl:text-9xl font-bold leading-[1.05] tracking-tight"
+                className="text-white text-8xl  font-bold leading-[1.05] tracking-tight"
                 style={{ fontFamily: "'Red Hat Display', 'Inter', sans-serif" }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                About  Meta
-                <br />
-                Master
+                About  Meta Master
+                
+                – Built for Indian Startups
               </motion.h1>
 
               <motion.p 
-                className="mt-8 max-w-[580px] text-gray-300/90 text-base xl:text-lg leading-relaxed"
+                className="mt-8 max-w-[620px] text-gray-300/90 text-base xl:text-lg leading-relaxed"
                 style={{ fontFamily: "'Inter', sans-serif" }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Meta Master is a 360° digital solutions hub built to help businesses
-                grow, transform, and thrive in the digital-first era. We blend
-                creativity, technology, and performance to craft strategies that
-                don't just deliver results today, but build sustainable success
-                for tomorrow.
+                Meta Master is a startup-focused digital marketing and branding agency built with a mission to help businesses transition from offline to online and grow digitally with confidence.
+                <br/><br/>
+
+With years of experience and multiple successful projects, we understand the challenges startups face and design solutions that work within limited budgets.
               </motion.p>
             </div>
 
@@ -86,9 +85,9 @@ export default function AboutMetaMaster() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                About Meta
+                About Meta Master
                 <br />
-                Master
+                 - Built for Indian Startups
               </motion.h1>
 
               <motion.p 
@@ -98,11 +97,9 @@ export default function AboutMetaMaster() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Meta Master is a 360° digital solutions hub built to help businesses
-                grow, transform, and thrive in the digital-first era. We blend
-                creativity, technology, and performance to craft strategies that
-                don't just deliver results today, but build sustainable success
-                for tomorrow.
+                Meta Master is a startup-focused digital marketing and branding agency built with a mission to help businesses transition from offline to online and grow digitally with confidence.
+                <br/><br/>
+With years of experience and multiple successful projects, we understand the challenges startups face and design solutions that work within limited budgets.
               </motion.p>
             </div>
 

@@ -413,7 +413,7 @@ export default function Hero() {
         {/* Subtext */}
         <p className="mt-6 max-w-3xl text-sm sm:text-base leading-relaxed text-white/80">
           <RevealWords
-            text="  We help startups and growth-stage companies establish a strong digital presence through strategic branding, high-performance websites, SEO-driven visibility, and result-oriented social media marketing."
+            text="Meta Master is a 360° digital marketing and branding agency in India focused on helping startups and emerging brands come online, build a strong digital presence, and grow using cost-effective marketing strategies. We work with businesses across India and help them scale step by step through smart digital marketing."
             delay={baseDelay + 0.9}
             start={startAnim}
           />
