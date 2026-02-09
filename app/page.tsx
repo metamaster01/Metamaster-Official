@@ -26,7 +26,6 @@ export default function Home() {
        <EnquiryPopup/>
        <Navbar/>
        <Hero/>
-       <Advertisement/>
        <AboutUs/>
        <Ribbon/>
        <Services/>
@@ -35,8 +34,9 @@ export default function Home() {
       <CallToAction/>
        <Testimonial/>
         <Blogs/>
-        <Newsletter/>
+       <Advertisement/>
         <FreeAuditSection/>
+        <Newsletter/>
        <Footer/>
       </>
   );
