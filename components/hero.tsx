@@ -404,7 +404,7 @@ export default function Hero() {
         {/* H1 */}
         <h1 className="max-w-6xl text-[clamp(2.8rem,6vw,5.2rem)] font-xl leading-[1.05] tracking-tight">
           <RevealWords
-            text="Building Scalable Digital Brands for the Next Generation of Businesses"
+            text="Digital Marketing Agency for StartUps in India."
             delay={baseDelay + 0.2}
             start={startAnim}
           />
