@@ -7,6 +7,7 @@ import { Analytics } from '@vercel/analytics/next';
 
 import { Red_Hat_Display, Inter } from 'next/font/google'
 import TabAttention from "@/components/TabAttention";
+import FloatingButtons from "@/components/FloatingButtons";
 
 const redHatDisplay = Red_Hat_Display({
   subsets: ['latin'],
@@ -55,6 +56,7 @@ export default function RootLayout({
       >
         <AppWrapper>
           {children}
+          <FloatingButtons/>
           <Analytics />
           <TabAttention />
         </AppWrapper>
