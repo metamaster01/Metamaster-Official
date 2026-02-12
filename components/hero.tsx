@@ -402,13 +402,19 @@ export default function Hero() {
         </motion.span>
 
         {/* H1 */}
-        <h1 className="max-w-6xl text-[clamp(2.8rem,6vw,5.2rem)] font-xl leading-[1.05] tracking-tight">
-          <RevealWords
-            text="Digital Marketing Agency for StartUps in India."
-            delay={baseDelay + 0.2}
-            start={startAnim}
-          />
-        </h1>
+      <h1 className="max-w-6xl text-[clamp(2.4rem,5.5vw,4.8rem)] font-semibold leading-[1.1] tracking-[-0.02em]">
+  <RevealWords
+    text="Digital Marketing Agency for"
+    delay={baseDelay + 0.2}
+    start={startAnim}
+  />
+  <br />
+  <span className="bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
+    StartUps in India.
+  </span>
+</h1>
+
+
 
         {/* Subtext */}
         <p className="mt-6 max-w-3xl text-sm sm:text-base leading-relaxed text-white/80">
@@ -433,8 +439,8 @@ export default function Hero() {
       .getElementById("free-audit")
       ?.scrollIntoView({ behavior: "smooth" });
   }}
-  className="inline-flex items-center gap-2 rounded-full bg-purple-500 px-8 py-3 text-sm font-semibold text-[#2B0046] transition hover:scale-105 hover:bg-white" 
->
+     className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-3 text-sm font-semibold text-white shadow-lg hover:scale-105 transition"
+  >
   Get Free Ads Audit
 </button>
 
@@ -444,8 +450,8 @@ export default function Hero() {
   href="https://wa.me/9529770498?text=Hi%20Meta%20Master%2C%20I%20want%20to%20grow%20my%20business."
   target="_blank"
   rel="noopener noreferrer"
-  className="inline-flex items-center bg-green-500 gap-2 rounded-full border border-white/25 px-9 py-3 text-sm font-medium text-white transition hover:bg-white hover:text-[#2B0046]"
->
+   className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-3 text-sm font-medium text-white/80 hover:bg-white hover:text-[#2B0046] transition"
+  >
   <MessageCircle size={18} />
   WhatsApp Now
 </a>
