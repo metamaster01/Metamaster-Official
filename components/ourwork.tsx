@@ -21,15 +21,15 @@ const works: WorkItem[] = [
     title: "Zaina Collection",
     subtitle: "Fashion eCommerce",
     desc: "A digital store that feels like luxury.",
-    image: "/projects/1.png",
+    image: "/projects/zaina-collection.png",
     alt: "Fashion portrait",
     slug: "zaina-collection",
   },
   {
     title: "Xplore Events",
-    subtitle: "Event management",
+    subtitle: "Event Management",
     desc: "A digital experience that celebrates every moment.",
-    image: "/projects/2.png",
+    image: "/projects/xplore-events.png",
     alt: "Event crowd",
     slug: "xplore-events",
   },
@@ -37,11 +37,36 @@ const works: WorkItem[] = [
     title: "Chakra Crystals",
     subtitle: "Wellness",
     desc: "Real creators, real growth.",
-    image: "/projects/3.png",
+    image: "/projects/chakra-crystals.png",
     alt: "Wellness crystals",
-    slug:"chakra-crystals"
+    slug: "chakra-crystals",
+  },
+  {
+    title: "Bliss Events",
+    subtitle: "Event Management & Wedding Planning",
+    desc: "360° digital marketing, social media management & Meta Ads lead generation for a premium event brand.",
+    image: "/projects/bliss-events.png",
+    alt: "Wedding event planning",
+    slug: "bliss-events",
+  },
+  {
+    title: "Trupti Warjurkar",
+    subtitle: "Personal Brand / Coach",
+    desc: "Complete digital ecosystem including branding, Meta Ads, website development with LMS & content systems.",
+    image: "/projects/trupti-warjurkar.png",
+    alt: "Personal coach branding",
+    slug: "trupti-warjurkar",
+  },
+  {
+    title: "Coach Neelu Taneja",
+    subtitle: "Personal Brand / YouTube Growth",
+    desc: "Instagram & YouTube growth strategy with structured content systems and personal brand positioning.",
+    image: "/projects/coach-neelu-taneja.png",
+    alt: "YouTube coaching brand",
+    slug: "coach-neelu-taneja",
   },
 ];
+
 
 const container = {
   hidden: { opacity: 0 },

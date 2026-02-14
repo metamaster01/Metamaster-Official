@@ -102,23 +102,51 @@ import Advertise from "@/components/advertisement";
 const projects = [
   {
     title: "Zaina Collection – Fashion eCommerce",
-    category: " A digital store that feels like luxury.",
-    image: "/projects/1.png",
+    category: "A digital store that feels like luxury.",
+    image: "/projects/zaina-collection.png",
     slug: "zaina-collection",
   },
   {
-    title: "Xplore events – Event management",
-    category: "a digital experience that celebrates every moment.",
-    image: "/projects/2.png",
+    title: "Xplore Events – Event Management",
+    category: "A digital experience that celebrates every moment.",
+    image: "/projects/xplore-events.png",
     slug: "xplore-events",
   },
   {
-    title: "Chakra Crystals-Wellness",
-    category: " Real creators, real growth.",
-    image: "/projects/3.png",
+    title: "Chakra Crystals – Wellness",
+    category: "Real creators, real growth.",
+    image: "/projects/chakra-crystals.png",
     slug: "chakra-crystals",
   },
+
+  // 🔥 Newly Added Projects
+
+  {
+    title: "Bliss Events – Wedding & Event Brand",
+    category: "360° digital marketing & premium brand positioning.",
+    image: "/projects/bliss-events.png",
+    slug: "bliss-events",
+  },
+  {
+    title: "Trupti Warjurkar – Personal Brand",
+    category: "Complete digital ecosystem with website & LMS.",
+    image: "/projects/trupti-warjurkar.png",
+    slug: "trupti-warjurkar",
+  },
+  {
+    title: "Coach Neelu Taneja – Personal Coaching Brand",
+    category: "YouTube & Instagram growth strategy execution.",
+    image: "/projects/coach-neelu-taneja.png",
+    slug: "coach-neelu-taneja",
+  },
+  {
+    title: "Sai Carnation – Farmhouse & Event Venue",
+    category: "1,000+ booking inquiries in 3 months.",
+    image: "/projects/sai-carnation.png",
+    slug: "sai-carnation",
+  },
 ];
+
 
 // export const metadata = {
 //   title: "Our Work | Meta Master - Digital Marketing Agency for Startups in India",
