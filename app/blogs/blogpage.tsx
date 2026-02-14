@@ -169,7 +169,9 @@ export default function BlogsPage() {
 
       {/* ================= HERO ================= */}
       <section
-        ref={(el) => el && sectionsRef.current.push(el)}
+        ref={(el) => {
+          if (el) sectionsRef.current.push(el)
+        }}
         className="relative px-6 pt-20 pb-20 text-center md:px-12 lg:px-20 opacity-0 translate-y-8 transition-all duration-700"
       >
         <p className="mb-6 inline-block rounded-full bg-purple-900/30 px-4 py-2 text-sm font-medium text-purple-300">
@@ -188,7 +190,9 @@ export default function BlogsPage() {
 
       {/* ================= FEATURED BLOG ================= */}
       <section
-        ref={(el) => el && sectionsRef.current.push(el)}
+        ref={(el) => {
+          if (el) sectionsRef.current.push(el)
+        }}
         className="relative px-6 pb-16 md:px-12 lg:px-20 opacity-0 translate-y-8 transition-all duration-700"
       >
         <div className="grid items-center gap-14 md:grid-cols-2">
@@ -235,7 +239,9 @@ export default function BlogsPage() {
 
       {/* ================= LATEST BLOGS ================= */}
       <section
-        ref={(el) => el && sectionsRef.current.push(el)}
+        ref={(el) => {
+          if (el) sectionsRef.current.push(el)
+        }}
         className="relative px-6 pb-28 md:px-12 lg:px-20 opacity-0 translate-y-8 transition-all duration-700"
       >
         <h2 className="mb-12 text-3xl font-bold">Latest Blogs</h2>
