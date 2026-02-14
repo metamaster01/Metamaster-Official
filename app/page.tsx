@@ -31,7 +31,7 @@ export default function Home() {
        <Services/>
        <WhyChooseUs/>
        <OurWorksSection/>
-      <CallToAction/>
+      {/* <CallToAction/> */}
        <Testimonial/>
         <Blogs/>
        <Advertisement/>

@@ -460,6 +460,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import KeyOutcomes from "@/components/KeyOutcomesSection";
+import ClientTestimonialSection from "@/components/projects/ClientTestimonialSection";
+import ProjectObjectivesSection from "@/components/projects/ProjectObjectivesSection";
 
 export default function CaseClient({ data }: { data: any }) {
   if (!data) return null;
@@ -590,6 +592,11 @@ export default function CaseClient({ data }: { data: any }) {
       </section>
 
 
+      <ProjectObjectivesSection
+  objectives={data.project_objectives}
+/>
+
+
       {/* ================= KEY OUTCOMES ================= */}
 {data.key_outcomes && (
   <section className="relative max-w-7xl mx-auto px-6 pb-36">
@@ -653,12 +660,16 @@ export default function CaseClient({ data }: { data: any }) {
   </section>
 )}
 
+
+
+
       {/* ================= CHALLENGE ================= */}
       <TwoColumnSection
         title="The Challenge"
         description={data.challenge_intro}
         items={data.challenge}
       />
+
 
 
       <KeyOutcomes data={data} />
@@ -670,7 +681,12 @@ export default function CaseClient({ data }: { data: any }) {
         items={data.results}
       />
 
-
+{data.client_testimonial && (
+  <ClientTestimonialSection
+    image={data.hero_image}
+    testimonial={data.client_testimonial}
+  />
+)}
 
       
     </main>

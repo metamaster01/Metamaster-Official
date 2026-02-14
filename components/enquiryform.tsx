@@ -54,7 +54,7 @@ export default function EnquiryPopup() {
     if (!error) {
       setSuccess(true);
       form.reset();
-      setTimeout(() => setOpen(false), 2000);
+      setTimeout(() => setOpen(false), 1000);
     } else {
       alert("Something went wrong. Please try again.");
     }
