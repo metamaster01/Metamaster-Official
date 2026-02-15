@@ -328,7 +328,7 @@ Whether you’re a startup founder, coach, creator, SME, or enterprise — our m
   </div>
 
   <InteractiveCard
-    src="/ourmission.png"
+    src="/our1mission.png"
     alt="Our mission"
     title="Our Mission"
   />
@@ -338,7 +338,7 @@ Whether you’re a startup founder, coach, creator, SME, or enterprise — our m
 <div className="grid md:grid-cols-2 gap-20 items-center">
 
   <InteractiveCard
-    src="/our-vision.png"
+    src="/our1vision.png"
     alt="Our vision"
     title="Our Vision"
   />
