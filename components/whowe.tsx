@@ -11,9 +11,7 @@ import {
 } from "framer-motion";
 import { useRef, useEffect } from "react";
 
-/* =====================================================
-   🔥 NEW 0. CINEMATIC PAGE INTRO (NON-DESTRUCTIVE)
-===================================================== */
+
 
 function PageIntro() {
   return (
@@ -26,9 +24,6 @@ function PageIntro() {
   );
 }
 
-/* =====================================================
-   🔥 NEW 0.5 GLOBAL MAGNETIC CURSOR (SEPARATE)
-===================================================== */
 
 function MagneticCursor() {
   const x = useMotionValue(0);
@@ -60,9 +55,7 @@ function MagneticCursor() {
   );
 }
 
-/* =====================================================
-   1. CHARACTER SPLIT (YOUR CODE — UNTOUCHED)
-===================================================== */
+
 
 function SplitChars({
   text,
@@ -125,9 +118,6 @@ function SplitChars({
   );
 }
 
-/* =====================================================
-   2. MAGNETIC TEXT (YOUR CODE — UNTOUCHED)
-===================================================== */
 
 function MagneticText({
   children,
@@ -170,9 +160,7 @@ function MagneticText({
   );
 }
 
-/* =====================================================
-   3. INTERACTIVE CARD + PARALLAX (YOUR CODE — UNTOUCHED)
-===================================================== */
+
 
 function InteractiveCard({
   src,
@@ -217,9 +205,7 @@ function InteractiveCard({
   );
 }
 
-/* =====================================================
-   4. NOISE / GRAIN OVERLAY (YOUR CODE — UNTOUCHED)
-===================================================== */
+
 
 function GrainOverlay() {
   return (
@@ -232,10 +218,6 @@ function GrainOverlay() {
     />
   );
 }
-
-/* =====================================================
-   5. SPLIT PARAGRAPHS COMPONENT (OUTSIDE RENDER)
-===================================================== */
 
 function SplitParagraphs({
   text,
