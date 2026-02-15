@@ -246,9 +246,7 @@ function SplitParagraphs({
   );
 }
 
-/* =====================================================
-   6. MAIN SECTION — YOUR STRUCTURE PRESERVED
-===================================================== */
+
 
 export default function WhoWe() {
   return (
