@@ -28,7 +28,7 @@ export default function AboutMetaMaster() {
               >
                 About  Meta Master
                 
-                – Built for Indian Startups
+                – Your 360° Digital Growth Partner
               </motion.h1>
 
               <motion.p 
@@ -38,10 +38,10 @@ export default function AboutMetaMaster() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Meta Master is a startup-focused digital marketing and branding agency built with a mission to help businesses transition from offline to online and grow digitally with confidence.
+                Meta Master is a full-service digital marketing and branding agency in India, built to help startups, personal brands, and businesses of all sizes go digital, grow their presence, and achieve measurable results — even with minimum budgets.
                 <br/><br/>
 
-With years of experience and multiple successful projects, we understand the challenges startups face and design solutions that work within limited budgets.
+                We specialize in performance marketing, social media growth, creative content production, website & SEO solutions, influencer marketing, and branding. Our integrated approach ensures that every brand we work with doesn’t just get visibility — it gets growth, conversions, and impact.
               </motion.p>
             </div>
 
@@ -87,7 +87,7 @@ With years of experience and multiple successful projects, we understand the cha
               >
                 About Meta Master
                 <br />
-                 - Built for Indian Startups
+                 - Your 360° Digital Growth Partner
               </motion.h1>
 
               <motion.p 
@@ -97,9 +97,10 @@ With years of experience and multiple successful projects, we understand the cha
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Meta Master is a startup-focused digital marketing and branding agency built with a mission to help businesses transition from offline to online and grow digitally with confidence.
+                Meta Master is a full-service digital marketing and branding agency in India, built to help startups, personal brands, and businesses of all sizes go digital, grow their presence, and achieve measurable results — even with minimum budgets.
                 <br/><br/>
-With years of experience and multiple successful projects, we understand the challenges startups face and design solutions that work within limited budgets.
+                We specialize in performance marketing, social media growth, creative content production, website & SEO solutions, influencer marketing, and branding. Our integrated approach ensures that every brand we work with doesn’t just get visibility — it gets growth, conversions, and impact.
+
               </motion.p>
             </div>
 

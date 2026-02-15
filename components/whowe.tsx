@@ -234,7 +234,38 @@ function GrainOverlay() {
 }
 
 /* =====================================================
-   5. MAIN SECTION — YOUR STRUCTURE PRESERVED
+   5. SPLIT PARAGRAPHS COMPONENT (OUTSIDE RENDER)
+===================================================== */
+
+function SplitParagraphs({
+  text,
+  className = "",
+}: {
+  text: string;
+  className?: string;
+}) {
+  const paragraphs = text.split("\n\n");
+
+  return (
+    <div className={className}>
+      {paragraphs.map((para, index) => (
+        <motion.p
+          key={index}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: index * 0.15 }}
+          className="mb-6 leading-relaxed"
+        >
+          {para}
+        </motion.p>
+      ))}
+    </div>
+  );
+}
+
+/* =====================================================
+   6. MAIN SECTION — YOUR STRUCTURE PRESERVED
 ===================================================== */
 
 export default function WhoWe() {
@@ -247,60 +278,316 @@ export default function WhoWe() {
 
       <div className="max-w-7xl mx-auto space-y-48">
 
-        {/* WHO WE ARE */}
+       {/* WHO WE ARE */}
         <div className="grid md:grid-cols-2 gap-20 items-center">
-          <InteractiveCard src="/whowe.png" alt="Who we are" title="Who We Are" />
+
+          <InteractiveCard
+            src="/who-we-are.png"
+            alt="Who we are"
+            title="Who We Are"
+          />
 
           <div>
+
             <MagneticText>
               <h2 className="text-5xl md:text-6xl font-extrabold mb-10">
                 Who we are?
               </h2>
             </MagneticText>
 
-            <SplitChars
-              delay={0.2}
+            <SplitParagraphs
               className="text-gray-300 max-w-xl text-lg"
-              text="Founded by Aman Kumar, Meta Master is driven by innovation and measurable impact. With 5+ years of experience and 100+ successful projects, we empower brands to scale with confidence."
+              text={`Meta Master is more than just a marketing agency — we are strategists, storytellers, creators, and growth drivers.
+
+Founded with the belief that every business deserves a powerful digital presence, we help brands build credibility, connect with their audience, and scale effectively across online platforms.
+
+What sets us apart is our focus on results, not just activity. We don’t just run ads or post content — we design systems that generate:
+
+• real leads  
+• measurable growth  
+• consistent engagement  
+• long-term brand authority  
+
+We blend data-centered performance marketing with creative excellence, enabling brands to compete and grow in today’s digital landscape.`}
             />
+
           </div>
         </div>
 
         {/* MISSION */}
-        <div className="grid md:grid-cols-2 gap-20 items-center">
-          <div>
-            <MagneticText>
-              <h2 className="text-5xl md:text-6xl font-extrabold mb-10">
-                Our Mission
-              </h2>
-            </MagneticText>
+<div className="grid md:grid-cols-2 gap-20 items-center">
 
-            <SplitChars
-              className="text-gray-300 max-w-xl text-lg"
-              text="To empower Indian startups with affordable, effective, and scalable digital marketing solutions. We strive to be a catalyst for growth, helping emerging brands build strong online presences and achieve their business goals."
-            />
-          </div>
+  <div>
+    <MagneticText>
+      <h2 className="text-5xl md:text-6xl font-extrabold mb-10">
+        Our Mission
+      </h2>
+    </MagneticText>
 
-          <InteractiveCard src="/ourmission.png" alt="Our mission" title="Our Mission" />
-        </div>
+    <SplitParagraphs
+      className="text-gray-300 max-w-xl text-lg"
+      text={`Our mission is to help businesses grow digitally with measurable results through expert strategy, creative execution, and ethical performance marketing.
 
-        {/* VISION */}
-        <div className="grid md:grid-cols-2 gap-20 items-center">
-          <InteractiveCard src="/our-vision.png" alt="Our vision" title="Our Vision" />
+We do this by:
 
-          <div>
-            <MagneticText>
-              <h2 className="text-5xl md:text-6xl font-extrabold mb-10">
-                Our Vision
-              </h2>
-            </MagneticText>
+• Crafting performance-driven marketing strategies that prioritize ROI  
+• Creating scroll-stopping social media content and video-first experiences  
+• Managing high-impact paid campaigns that generate quality leads  
+• Developing SEO-friendly websites and systems that convert  
+• Supporting entrepreneurs & founders at every step of their digital journey  
 
-            <SplitChars
-              className="text-gray-300 max-w-xl text-lg"
-              text="Our vision is to make digital marketing simple, affordable, and accessible for every startup in India, regardless of budget size. We aim to be the go-to partner for emerging brands seeking to leverage digital channels for growth and success."
-            />
-          </div>
-        </div>
+We believe digital marketing shouldn’t be confusing, overwhelming, or expensive. That’s why we design solutions that are:
+
+• Affordable  
+• Effective  
+• Customized  
+• Results-focused  
+
+Whether you’re a startup founder, coach, creator, SME, or enterprise — our mission is the same: partner with you to grow, scale, and win online.`}
+    />
+  </div>
+
+  <InteractiveCard
+    src="/ourmission.png"
+    alt="Our mission"
+    title="Our Mission"
+  />
+</div>
+
+      {/* VISION */}
+<div className="grid md:grid-cols-2 gap-20 items-center">
+
+  <InteractiveCard
+    src="/our-vision.png"
+    alt="Our vision"
+    title="Our Vision"
+  />
+
+  <div>
+    <MagneticText>
+      <h2 className="text-5xl md:text-6xl font-extrabold mb-10">
+        Our Vision
+      </h2>
+    </MagneticText>
+
+    <SplitParagraphs
+      className="text-gray-300 max-w-xl text-lg"
+      text={`To empower every startup and business across India with affordable, effective, and performance-driven digital solutions — making digital growth simple, accessible, and impactful for all.
+
+We envision a future where:
+
+• Emerging brands are digitally visible  
+• Small businesses thrive online  
+• Personal brands become authorities  
+• Clients experience measurable ROI  
+• Businesses succeed with clarity, strategy, and confidence  
+
+Meta Master aims to bridge the gap between dreams and digital reality — turning online potential into business outcomes.`}
+    />
+  </div>
+
+</div>
+
+{/* WHAT WE BELIEVE IN */}
+<div className="space-y-20">
+
+  <MagneticText>
+    <h2 className="text-5xl md:text-6xl font-extrabold text-center">
+      What We Believe In
+    </h2>
+  </MagneticText>
+
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+    {[
+      {
+        title: "Transparency",
+        desc: "Clear reporting, honest communication, and straightforward strategy.",
+      },
+      {
+        title: "Performance Accountability",
+        desc: "We focus on results — not vanity metrics.",
+      },
+      {
+        title: "Creativity with Purpose",
+        desc: "Beautiful content that drives business outcomes.",
+      },
+      {
+        title: "Client-First Approach",
+        desc: "Your goals become our #1 priority.",
+      },
+      {
+        title: "Growth for All Budgets",
+        desc: "Scalable solutions for startups and established brands alike.",
+      },
+    ].map((item, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: i * 0.1 }}
+        whileHover={{ scale: 1.05 }}
+        className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 transition"
+      >
+        <h3 className="text-2xl font-semibold mb-4 text-yellow-400">
+          {item.title}
+        </h3>
+        <p className="text-gray-300">{item.desc}</p>
+      </motion.div>
+    ))}
+
+  </div>
+</div>
+
+
+{/* WHO WE SERVE */}
+<div className="space-y-20">
+
+  <MagneticText>
+    <h2 className="text-5xl md:text-6xl font-extrabold text-center">
+      Who We Serve
+    </h2>
+  </MagneticText>
+
+  <div className="grid md:grid-cols-3 gap-8 text-center">
+
+    {[
+      "Startups & Small Businesses",
+      "Coaches & Personal Brands",
+      "E-commerce Brands",
+      "Wellness & Lifestyle",
+      "Real Estate & Events",
+      "Professional Services",
+      "Educational & Training Platforms",
+    ].map((item, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: i * 0.08 }}
+        className="border border-white/10 rounded-2xl py-6 bg-white/5 hover:bg-white/10 transition"
+      >
+        {item}
+      </motion.div>
+    ))}
+
+  </div>
+
+  <p className="text-center text-gray-400 max-w-3xl mx-auto mt-10">
+    From early-stage founders to established companies, we help brands attract attention, nurture interest, and convert it into sustainable business growth.
+  </p>
+
+</div>
+
+{/* HOW WE WORK */}
+<div className="space-y-20">
+
+  <MagneticText>
+    <h2 className="text-5xl md:text-6xl font-extrabold text-center">
+      How We Work
+    </h2>
+  </MagneticText>
+
+  <div className="relative max-w-3xl mx-auto">
+
+    <div className="absolute left-4 top-0 bottom-0 w-[2px] bg-yellow-400/30" />
+
+    {[
+      "Discover & Audit",
+      "Strategy & Roadmap",
+      "Creative Execution",
+      "Analyze & Optimize",
+      "Scale & Grow",
+    ].map((step, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, x: -40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: i * 0.1 }}
+        className="relative pl-12 mb-10"
+      >
+        <div className="absolute left-0 top-2 w-4 h-4 bg-yellow-400 rounded-full" />
+        <h3 className="text-xl font-semibold">{step}</h3>
+      </motion.div>
+    ))}
+
+  </div>
+
+  <p className="text-center text-gray-400 max-w-2xl mx-auto">
+    This process becomes your digital growth engine — optimized for results, not just impressions.
+  </p>
+
+</div>
+
+{/* WHY META MASTER */}
+<div className="space-y-20 text-center">
+
+  <MagneticText>
+    <h2 className="text-5xl md:text-6xl font-extrabold">
+      Why Meta Master?
+    </h2>
+  </MagneticText>
+
+  <p className="text-gray-400 max-w-3xl mx-auto">
+    Because we don’t just do digital marketing — we engineer digital success.
+  </p>
+
+  <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+
+    {[
+      "Performance Marketing Expertise",
+      "Creative & Content Power",
+      "Strategic Growth Systems",
+      "Real, Measurable Results",
+      "Affordable Startup-Ready Solutions",
+    ].map((item, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: i * 0.08 }}
+        className="bg-white/5 border border-white/10 rounded-2xl py-6"
+      >
+        {item}
+      </motion.div>
+    ))}
+
+  </div>
+
+  <p className="text-yellow-400 font-semibold mt-10">
+    Let us help you turn clicks into customers — and visibility into growth.
+  </p>
+
+</div>
+
+{/* FINAL CTA */}
+<div className="relative mt-40 py-20 text-center rounded-3xl bg-gradient-to-r from-yellow-400/10 to-purple-500/10 border border-white/10">
+
+  <MagneticText>
+    <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
+      Ready to Grow Your Brand?
+    </h2>
+  </MagneticText>
+
+  <p className="text-gray-300 max-w-2xl mx-auto mb-10">
+    If you&apos;re ready to take your business online and accelerate your growth,
+    Meta Master is your strategic partner for digital success.
+  </p>
+
+  <motion.a
+    whileHover={{ scale: 1.1 }}
+    href="/contact"
+    className="inline-block bg-yellow-400 text-black px-10 py-4 rounded-full font-semibold"
+  >
+    Start Your Journey
+  </motion.a>
+
+</div>
+
 
       </div>
     </section>
