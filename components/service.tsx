@@ -170,7 +170,13 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  MotionValue,
+} from "framer-motion";
 
 type Service = {
   title: string;
@@ -224,119 +230,148 @@ const services: Service[] = [
   },
 ];
 
-function ServiceCard({ item, index }: { item: Service; index: number }) {
-  const CardTag: any = item.href ? motion(Link) : motion.div;
-  const cardProps = item.href ? { href: item.href } : {};
+type CardProps = {
+  item: Service;
+  index: number;
+};
 
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+function ServiceCard({ item, index }: CardProps) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  const smoothX = useSpring(x, { stiffness: 120, damping: 15 });
-  const smoothY = useSpring(y, { stiffness: 120, damping: 15 });
+  const smoothX = useSpring(mouseX, { stiffness: 120, damping: 18 });
+  const smoothY = useSpring(mouseY, { stiffness: 120, damping: 18 });
 
-  const rotateX = useTransform(smoothY, [-0.5, 0.5], [6, -6]);
-  const rotateY = useTransform(smoothX, [-0.5, 0.5], [-6, 6]);
+  const rotateX = useTransform(smoothY, [-0.5, 0.5], [4, -4]);
+  const rotateY = useTransform(smoothX, [-0.5, 0.5], [-4, 4]);
+
+  // SAFE spotlight transform
+  const lightX: MotionValue<number> = useTransform(
+    smoothX,
+    (v: number) => 50 + v * 100
+  );
+
+  const lightY: MotionValue<number> = useTransform(
+    smoothY,
+    (v: number) => 50 + v * 100
+  );
+
+  const spotlight = useTransform(
+    [lightX, lightY],
+    ([lx, ly]: [number, number]) =>
+      `radial-gradient(circle at ${lx}% ${ly}%, rgba(255,255,255,0.10), transparent 65%)`
+  );
 
   function handleMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
-    const mouseX = (e.clientX - rect.left) / rect.width - 0.5;
-    const mouseY = (e.clientY - rect.top) / rect.height - 0.5;
-    x.set(mouseX);
-    y.set(mouseY);
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
   }
 
   function reset() {
-    x.set(0);
-    y.set(0);
+    mouseX.set(0);
+    mouseY.set(0);
   }
 
+  const CardWrapper = item.href ? motion(Link) : motion.div;
+
   return (
-    <CardTag
-      {...cardProps}
+    <CardWrapper
+      {...(item.href ? { href: item.href } : {})}
       onMouseMove={handleMove}
       onMouseLeave={reset}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      initial={{ opacity: 0, y: 40 }}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.08 }}
+      transition={{ duration: 0.5, delay: index * 0.07 }}
       viewport={{ once: true }}
-      className="relative group rounded-2xl"
+      className="relative group"
     >
-      <div className="relative rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-xl p-6 shadow-xl transition duration-500 group-hover:shadow-2xl">
-
-        {/* Natural light reflection */}
+      <motion.div
+        whileHover={{ y: -2 }}
+        transition={{ type: "spring", stiffness: 200, damping: 20 }}
+        className="
+          relative rounded-2xl
+          border border-white/10
+          bg-[#0b0b0f]
+          p-7
+          shadow-[0_1px_2px_rgba(0,0,0,0.4),0_8px_24px_rgba(0,0,0,0.35)]
+          group-hover:shadow-[0_2px_6px_rgba(0,0,0,0.5),0_16px_40px_rgba(0,0,0,0.45)]
+          transition-shadow duration-500
+        "
+      >
+        {/* Soft spotlight */}
         <motion.div
-          className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500"
-          style={{
-            background: useTransform(
-              [smoothX, smoothY],
-              ([x, y]) =>
-                `radial-gradient(circle at ${50 + x * 100}% ${
-                  50 + y * 100
-                }%, rgba(255,255,255,0.12), transparent 60%)`
-            ),
-          }}
+          className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500"
+          style={{ background: spotlight }}
         />
 
         {/* Image */}
         <motion.div
-          className="relative aspect-square rounded-xl overflow-hidden"
-          style={{ translateZ: 30 }}
+          className="relative aspect-square rounded-xl overflow-hidden bg-[#111]"
+          style={{ translateZ: 25 }}
         >
           <motion.img
             src={item.gif}
             alt={item.title}
             className="h-full w-full object-contain"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.03 }}
             transition={{ duration: 0.4 }}
           />
         </motion.div>
 
         <motion.h3
-          className="mt-5 text-lg font-semibold text-white"
-          style={{ translateZ: 40 }}
+          className="mt-6 text-lg font-semibold text-white tracking-tight"
+          style={{ translateZ: 35 }}
         >
           {item.title}
         </motion.h3>
 
         <motion.p
-          className="mt-2 text-sm text-white/60 leading-relaxed"
-          style={{ translateZ: 35 }}
+          className="mt-3 text-sm text-white/55 leading-relaxed"
+          style={{ translateZ: 30 }}
         >
           {item.description}
         </motion.p>
 
         <motion.div
-          className="mt-6"
-          whileHover={{ scale: 1.1 }}
-          transition={{ type: "spring", stiffness: 200 }}
+          className="mt-7"
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 220 }}
         >
-          <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white text-black shadow-md">
-            <ArrowUpRight className="h-5 w-5" />
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-black shadow-sm">
+            <ArrowUpRight className="h-4 w-4" />
           </span>
         </motion.div>
-      </div>
-    </CardTag>
+      </motion.div>
+    </CardWrapper>
   );
 }
 
 export default function Services() {
   return (
-    <section className="relative bg-[#050008] px-6 py-24">
+    <section className="relative bg-[#050008] px-6 py-28">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16">
-          <p className="text-xs uppercase tracking-widest text-white/40">
+        <div className="mb-20">
+          <p className="text-xs uppercase tracking-widest text-white/35">
             What we do
           </p>
-          <h2 className="mt-3 text-4xl font-semibold text-white sm:text-5xl">
+          <h2 className="mt-4 text-4xl font-semibold text-white sm:text-5xl tracking-tight">
             Our Services
           </h2>
-          <p className="mt-4 max-w-xl text-sm text-white/60">
-            We provide end-to-end digital solutions designed for sustainable growth and measurable impact.
+          <p className="mt-6 max-w-xl text-sm text-white/55 leading-relaxed">
+            We provide end-to-end digital systems engineered for clarity,
+            measurable growth, and long-term performance.
           </p>
         </div>
 
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 perspective-[1000px]">
+        <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-3 perspective-[900px]">
           {services.map((service, i) => (
             <ServiceCard key={service.title} item={service} index={i} />
           ))}
@@ -345,6 +380,3 @@ export default function Services() {
     </section>
   );
 }
-
-
-
