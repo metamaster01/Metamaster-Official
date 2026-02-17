@@ -1,56 +1,34 @@
-"use client";
+'use client';
+import { useState } from 'react';
 
-import { useEffect, useState } from "react";
-import { Phone, ArrowUp } from "lucide-react";
 
-export default function FloatingButtons() {
-  const [showTop, setShowTop] = useState(false);
 
-  // Scroll detection
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowTop(true);
-      } else {
-        setShowTop(false);
-      }
+export default function WhatsAppIcon() {
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleWhatsAppClick = () => {
+        const phoneNumber = '+919529770498'; // Replace with your WhatsApp number
+        const message = 'Hello! I am interested in your services.'; // Default message
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        window.open(whatsappUrl, '_blank');
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  return (
-    <>
- 
-
-      {/* RIGHT WHATSAPP BUTTON */}
-      <a
-        href="https://wa.me/919529770498"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed right-4 bottom-24 z-50 bg-green-500
-                    hover:bg-green-600 
-                   w-16 h-16 rounded-full 
-                   flex items-center justify-center 
-                   shadow-xl transition duration-300"
-      >
-        <img
-          src="/whatsapp.png"
-          alt="whatsapp"
-          className="w-8 h-18 object-contain"
-        />
-      </a>
-
-      {/* SCROLL TO TOP BUTTON */}
-     
-    </>
-  );
+    return (
+        <button
+            onClick={handleWhatsAppClick}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className={`fixed bottom-6 right-6 z-50 cursor-pointer transition-all duration-300 ease-in-out ${
+            isHovered ? 'scale-110 shadow-lg' : 'shadow-md'
+            }`}
+            aria-label="Chat on WhatsApp"
+        >
+            <img
+            src="/whatsapp.gif"
+            alt="WhatsApp"
+            className="w-16 h-16 rounded-full"
+            />
+        </button>
+    );
 }
