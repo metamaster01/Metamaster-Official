@@ -5,22 +5,22 @@ import { motion } from "framer-motion";
 
 export default function AboutMetaMaster() {
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#1a0a2e] to-[#0a0a0a] mt-14">
+    <section className="relative w-full min-h-screen overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#1a0a2e] to-[#0a0a0a] ">
       {/* AMBIENT GLOWS */}
       <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-purple-600/15 blur-[200px] rounded-full" />
       <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-fuchsia-600/10 blur-[180px] rounded-full" />
 
       {/* MAIN CONTENT CONTAINER */}
-      <div className="relative z-10 w-full min-h-screen flex items-center">
+      <div className="relative z-10 w-full min-h-screen flex items-center mt-14">
         <div className="w-full max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-0">
           
           {/* DESKTOP LAYOUT - Side by side with overlay */}
           <div className="hidden lg:flex items-center justify-between relative">
             
             {/* LEFT SIDE - TEXT CONTENT - 65% width */}
-            <div className="w-[65%] pr-12 xl:pr-20 z-20">
+            <div className="w-[75%] pr-12 z-30">
               <motion.h1 
-                className="text-white text-8xl  font-bold leading-[1.05] tracking-tight"
+                className="text-white text-7xl  font-bold leading-[1.05] tracking-tight"
                 style={{ fontFamily: "'Red Hat Display', 'Inter', sans-serif" }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -32,7 +32,7 @@ export default function AboutMetaMaster() {
               </motion.h1>
 
               <motion.p 
-                className="mt-8 max-w-[620px] text-gray-300/90 text-base xl:text-lg leading-relaxed"
+                className="mt-8 max-w-[720px] text-gray-300/90 text-base xl:text-lg leading-relaxed"
                 style={{ fontFamily: "'Inter', sans-serif" }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
