@@ -183,7 +183,7 @@ export default function EnquiryPopup() {
     const timer = setTimeout(() => {
       setOpen(true);
       sessionStorage.setItem("enquiryPopupShown", "true");
-    }, 5000);
+    }, 50000);
 
     return () => clearTimeout(timer);
   }, []);
