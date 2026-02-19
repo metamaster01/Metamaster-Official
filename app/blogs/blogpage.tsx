@@ -69,11 +69,11 @@ export default function BlogsPage() {
   const blogs = [
     {
       id: 1,
-      slug: 'branding-strategy',
-      title: 'High-Impact Branding Strategy',
-      description: 'Design and messaging choices that actually convert users.',
-      image: '/blog1.png',
-      tag: 'Branding',
+      slug: 'On-Page-Seo',
+      title: 'On-Page SEO Checklist 2026 | Top Digital Marketing Agencies in India',
+      description: 'Follow this step-by-step on-page SEO checklist for 2026 used by top digital marketing agencies in India to improve rankings and website performance..',
+      image: '/onpageseo1.png',
+      tag: 'On-Page SEO Checklist',
       meta: '5 min · Jan 2026',
     },
     {
