@@ -1,25 +1,51 @@
+// import BlogsPage from "./blogpage";
 
+// import CallToAction from "@/components/calltoaction";
+
+// export const metadata = {
+//   title: "Digital Marketing Blog for Startups in India | Meta Master",
+//   description: "Read expert blogs on digital marketing, Meta ads, SEO, and startup growth strategies by Meta Master.",
+//   keywords: ["Meta Master Blog", "Digital Marketing Insights", "Startup Growth", "Branding Strategies", "Online Presence", "Marketing Tips", "India Startups","Instargam Growth and Stratergies","SEO tips for startups","Meta Ads best practices"],
+// };
+
+// export default function Home() {
+//   return (
+//     <>
+
+//        <Navbar/>
+//       <BlogsPage/>
+//          <CallToAction/>
+//        <Footer/>
+//       </>
+//   );
+// }
+
+// app/blogs/page.tsx
+// Replaces your static blogs page — now fully dynamic from Supabase
+
+import type { Metadata } from "next";
+import { getPublishedBlogs } from "@/lib/blogs";
+import BlogsClient from "./BlogsClient";
 import Navbar from "@/components/navbar";
-import BlogsPage from "./blogpage";
+import Footer from "@/components/footer";
 
-import CallToAction from "@/components/calltoaction";
-
-import Footer from "@/components/footer";   
-
-export const metadata = {
-  title: "Digital Marketing Blog for Startups in India | Meta Master",
-  description: "Read expert blogs on digital marketing, Meta ads, SEO, and startup growth strategies by Meta Master.",
-  keywords: ["Meta Master Blog", "Digital Marketing Insights", "Startup Growth", "Branding Strategies", "Online Presence", "Marketing Tips", "India Startups","Instargam Growth and Stratergies","SEO tips for startups","Meta Ads best practices"],
+export const metadata: Metadata = {
+  title: "Blogs | MetaMaster — Digital Marketing Insights",
+  description:
+    "Stay updated with the latest in SEO, performance marketing, social media growth, and digital strategy from MetaMaster.",
 };
 
-export default function Home() {
+// Revalidate every 60 seconds (ISR) — new blogs appear without full redeploy
+export const revalidate = 60;
+
+export default async function BlogsPage() {
+  const { featured, blogs } = await getPublishedBlogs();
+
   return (
-    <>
-       
-       <Navbar/>
-      <BlogsPage/>
-         <CallToAction/>
-       <Footer/> 
-      </>
+    <div>
+      <Navbar />
+      <BlogsClient featured={featured} blogs={blogs} />
+      <Footer />
+    </div>
   );
 }
